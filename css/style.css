@@ -86,6 +86,8 @@ form {
     background-position: right;
 }
 
+/* Responsive CSS */
+
 @media screen and (max-width: 1050px) {
     .container {
         grid-gap: 5rem;

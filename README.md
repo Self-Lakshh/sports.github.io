@@ -1,2 +1,3 @@
-# sports.github.io
-Sports Inventory Management System using Web Development
+# Sports Inventory Managementusing Web Development
+
+Creating a portal for university students to request the sports equipments and for sports staff to issue the requested materials.
