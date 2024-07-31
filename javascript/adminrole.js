@@ -28,14 +28,10 @@ onAuthStateChanged(auth, async (user) => {
     const userRef = doc(db, "userRoles", user.uid);
     const userDoc = await getDoc(userRef);
 
-    if (!userDoc.exists()) {
+    if (!userDoc.exists() || userDoc.data().role !== "admin") {
       window.location.href = "index.html";
     } else {
-      const role = userDoc.data().role;
-      if (role !== "admin") {
-        window.location.href = "index.html";
-      }
-      // User is authorized, you can load your admin.html content here
+      document.getElementById("content").style.display = "block"; // Show content
     }
   } else {
     window.location.href = "index.html";
