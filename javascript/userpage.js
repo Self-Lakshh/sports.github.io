@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTitle = document.getElementById('modal-title');
   
     const sportItems = {
-      cricket: ['Cricket Bat', 'Cricket Ball', 'Stumps', 'Pads', 'Helmet'],
-      badminton: ['Badminton Racket', 'Shuttlecock', 'Net', 'Court Shoes'],
-      football: ['Football', 'Goal Net', 'Shin Guards', 'Football Boots'],
-      basketball: ['Basketball', 'Hoop', 'Net', 'Court Shoes'],
-      lawn_tennis: ['Tennis Racket', 'Tennis Ball', 'Net', 'Court Shoes'],
-      table_tennis: ['Table Tennis Racket', 'Table Tennis Ball', 'Table', 'Net']
+      cricket: ['Cricket Bat', 'Cricket Ball', 'Stumps'],
+      badminton: ['Badminton Racket', 'Shuttlecock', 'Net'],
+      football: ['Football', 'Goal Net'],
+      basketball: ['Basketball'],
+      long_tennis: ['Tennis Racket', 'Tennis Ball', 'Net'],
+      table_tennis: ['Table Tennis Racket', 'Table Tennis Ball', 'Net']
     };
   
     const sportCards = document.querySelectorAll('.sport-card');
@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       itemList.innerHTML = '';
       sportItems[sport].forEach(item => {
         const itemDiv = document.createElement('div');
+        itemDiv.className = 'form-group';
         itemDiv.innerHTML = `
           <label>${item}</label>
           <input type="number" min="0" max="10" value="0" />
