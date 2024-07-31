@@ -18,38 +18,46 @@
     </div>
     <div class="main">
       <div class="sports-grid">
-        <div class="sport-card" onclick="window.location.href='cricket.html'">
+        <div class="sport-card" data-sport="cricket">
           <h3>Cricket</h3>
         </div>
-        <div class="sport-card" onclick="window.location.href='badminton.html'">
+        <div class="sport-card" data-sport="badminton">
           <h3>Badminton</h3>
         </div>
-        <div class="sport-card" onclick="window.location.href='football.html'">
+        <div class="sport-card" data-sport="football">
           <h3>Football</h3>
         </div>
-        <div
-          class="sport-card"
-          onclick="window.location.href='basketball.html'"
-        >
+        <div class="sport-card" data-sport="basketball">
           <h3>Basketball</h3>
         </div>
-        <div
-          class="sport-card"
-          onclick="window.location.href='lawn_tennis.html'"
-        >
+        <div class="sport-card" data-sport="lawn_tennis">
           <h3>Lawn Tennis</h3>
         </div>
-        <div
-          class="sport-card"
-          onclick="window.location.href='table_tennis.html'"
-        >
+        <div class="sport-card" data-sport="table_tennis">
           <h3>Table Tennis</h3>
         </div>
       </div>
     </div>
+
+    <!-- footer -->
     <div class="footer">
       <p>&copy; 2024 SPSU Sports ERP</p>
     </div>
-    <script type="module" src="javascript/userrole.js"></script>
+
+
+    <!-- Modal Popup -->
+    <div id="popup-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3 id="modal-title">Sport Items</h3>
+        <div id="item-list"></div>
+        <button id="request-button">Request Items</button>
+      </div>
+    </div>
+
+    <!-- js linking -->
+    <script type="module" src="javascript/userrole.js"></script> 
+    <script src="javascript/userpage.js"></script>
+
   </body>
 </html>
