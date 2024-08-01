@@ -25,7 +25,8 @@ const db = getFirestore(app);
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    const userRef = doc(db, "userRoles", user.uid);
+    const email = user.email; // Use email as the document ID
+    const userRef = doc(db, "userRoles", email);
     const userDoc = await getDoc(userRef);
 
     if (!userDoc.exists() || userDoc.data().role !== "user") {

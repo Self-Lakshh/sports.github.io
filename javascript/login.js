@@ -33,13 +33,32 @@ googleLogin.addEventListener("click", function() {
         if (email.endsWith(allowedDomain)) {
             console.log(user);
 
-            const userRef = doc(db, 'userRoles', user.uid);
+            const emailParts = email.split('@')[0].split('.');
+            const name = emailParts[0];
+            const course = emailParts[1].replace(/[0-9]/g, ''); // Remove numbers from course
+
+            const userRef = doc(db, 'userRoles', email);
             const userDoc = await getDoc(userRef);
+
+            // Retrieve phone number from preErp collection
+            const preErpRef = doc(db, 'preErp', 'phone_no');
+            const preErpDoc = await getDoc(preErpRef);
+
+            if (!preErpDoc.exists()) {
+                console.error("preErp document does not exist.");
+                return;
+            }
+
+            const preErpData = preErpDoc.data();
+            const phone_no = preErpData[email];
 
             if (!userDoc.exists()) {
                 // If user does not exist, add to Firestore with role "user"
                 await setDoc(userRef, {
+                    name: name,
                     email: email,
+                    course: course,
+                    phone_no: phone_no, // Add phone number
                     role: 'user'
                 });
                 console.log("New user document created with role 'user'");
