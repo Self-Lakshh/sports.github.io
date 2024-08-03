@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    margin: 0;
+    font-family: "Inter";
+}
+.navbar {
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: -5px 2px 7px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+}
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+}
+.navbar-brand img {
+    height: 60px;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+}
+.welcome-message {
+    margin: 0 10px 0 0;
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+.user-avatar {
+    background-color: var(--spsu-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.profile-icon {
+    font-size: 1.5rem;
+}
+/* side nav bar */
+
+.sidenav-head {
+    font-family: "Inter";
+    font-weight: 600;
+    color: white;
+    font-size: 22px;
+    padding-left: 20px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    background-color: var(--spsu-color);
+    padding-top: 20px;
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.25);
+}
+.sidenav-items{
+    padding-top: 18px;
+}
+.sidenav-items a {
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+}
+.sidenav a:hover {
+    background-color: var(--spsu-color-dark);
+}
+.sidenav .active {
+    background-color: var(--spsu-color-dark);
+}
+.sidenav i {
+    margin-right: 15px;
+}
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    margin-top: 70px;
+}

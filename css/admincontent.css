@@ -1,0 +1,88 @@
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+    width: max-content;
+}
+
+.content-main {
+    display: flex;
+    position: absolute;
+    top: 14%;
+    left: 22%;
+}
+
+
+/* ============  DashBoard =============  */
+
+.stats-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-row {
+  display: flex;
+  gap: 20px;
+}
+
+.stat-card {
+  background-color: #fff;
+  box-shadow: 0 0 12px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arimo, sans-serif;
+  text-align: center;
+  width: 130px;
+  padding: 24px;
+}
+
+.stat-icon {
+  aspect-ratio: 1;
+  color: var(--spsu-color);
+  object-fit: contain;
+  object-position: center;
+  font-size: 58px;
+  max-width: 100%;
+}
+
+.stat-value {
+  color: #3c8e87;
+  font-size: 32px;
+  margin-top: 18px;
+  margin-bottom: 0px;
+}
+
+.stat-label {
+  color: var(--spsu-color);
+  font-size: 15px;
+  margin-top: 18px;
+  font-weight: 500;
+}
+
+.report-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 38px;
+  width: 60%;
+
+}
+
+.report-button {
+  background-color: var(--spsu-color);
+  color: #fff;
+  font: 700 18px Arimo, sans-serif;
+  text-align: center;
+  padding: 14px 64px;
+  border: none;
+  cursor: pointer;
+}
+
+.download-ondb {
+    display: flex;
+    margin-bottom: 24px;
+    justify-content: center;
+}
+

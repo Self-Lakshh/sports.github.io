@@ -1,18 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin page-item</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Console</title>
+    <link rel="shortcut icon" href="assets/spsu/favicon.png" type="png">
     <style>
         /* Hide content initially */
         #content {
             display: none;
         }
     </style>
+    <link rel="stylesheet" href="css/golbal.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admincontent.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
+
 <body id="content">
-    <h1>This is the admin page</h1>
+
+    <!-- header -->
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/spsu/erplogo.png" alt="">
+            </a>
+            <div class="user-info">
+                <p class="welcome-message">Welcome Admin !!</p>
+                <div class="user-avatar" role="img" aria-label="Admin Avatar"><i
+                        class="bi bi-person-fill profile-icon"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- side navbar -->
+
+    <div class="sidenav">
+        <a class="sidenav-head">Navigation</a>
+        <div class="sidenav-items">
+            <a href="#" class="active" data-target="dashboard"><i class="bi bi-speedometer2"></i>Dashboard</a>
+            <a href="#" data-target="pending-requests"><i class="bi bi-hourglass"></i>Pending Requests</a>
+            <a href="#" data-target="inventory"><i class="bi bi-box-seam"></i>Inventory</a>
+            <a href="#" data-target="reports"><i class="bi bi-file-spreadsheet"></i>Reports</a>
+            <a href="#" data-target="activity-logs"><i class="bi bi-stack-overflow"></i>Activity Logs</a>
+            <a href="#" data-target="manage-users"><i class="bi bi-person"></i>Manage Users</a>
+            <a href="#" data-target="manage-events"><i class="bi bi-calendar3-event"></i>Manage Events</a>
+        </div>
+    </div>
+
+    <!-- Content Control -->
+
+    <div class="content-main">
+
+        <!-- DashBoard -->
+        <div id="dashboard" class="content-section">
+            <section class="stats-panel">
+                <div class="stat-row download-ondb">
+                    <div class="report-buttons">
+                        <button class="report-button">View Daily Report</button>
+                        <button class="report-button">View Monthly Report</button>
+                    </div>
+                </div>
+                <div class="stats-row">
+                    <article class="stat-card">
+                        <i class="bi bi-people-fill stat-icon"></i>
+                        <p class="stat-value" id="total-users">...</p>
+                        <h2 class="stat-label">Total Users</h2>
+                    </article>
+                    <article class="stat-card">
+                        <i class="bi bi-clock-history stat-icon"></i>
+                        <p class="stat-value">15</p>
+                        <h2 class="stat-label">Pending Requests</h2>
+                    </article>
+                    <article class="stat-card">
+                        <i class="bi bi-card-checklist stat-icon"></i>
+                        <p class="stat-value">17</p>
+                        <h2 class="stat-label">Allocated Items</h2>
+                    </article>
+                    <article class="stat-card">
+                        <i class="bi bi-trash stat-icon"></i>
+                        <p class="stat-value">5</p>
+                        <h2 class="stat-label">Rejected Requests</h2>
+                    </article>
+                    <article class="stat-card">
+                        <i class="bi bi-boxes stat-icon"></i>
+                        <p class="stat-value">55</p>
+                        <h2 class="stat-label">Current Inventory</h2>
+                    </article>
+                    <article class="stat-card">
+                        <i class="bi bi-table stat-icon"></i>
+                        <p class="stat-value">0</p>
+                        <h2 class="stat-label">Ongoing Events</h2>
+                    </article>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- Pending Requests -->
+        <div id="pending-requests" class="content-section">Pending Requests Content</div>
+
+        <!-- Inventory -->
+        <div id="inventory" class="content-section">Inventory Content</div>
+
+        <!-- reports -->
+        <div id="reports" class="content-section">Reports Content</div>
+
+        <!-- activity Logs -->
+        <div id="activity-logs" class="content-section">Activity Logs Content</div>
+
+        <!-- manage users -->
+        <div id="manage-users" class="content-section">Manage Users Content</div>
+
+        <!-- manage events -->
+        <div id="manage-events" class="content-section">Manage Events Content</div>
+
+
+    </div>
+
+
+
+    <!-- JS For auth bypass -->
     <script type="module" src="javascript/adminrole.js"></script>
+
+    <!-- Dashboard Js -->
+    <script type="module" src="javascript/dashboard.js"></script>
+
+
+
+
+    <!-- Control pannel swithing js -->
+    <script src="javascript/admincontent.js"></script>
+
+    <!-- Bootstrap JS and Popper.js (optional, for Bootstrap's JS components) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 </body>
+
 </html>
