@@ -1,13 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
-import {
-  getAuth,
-  onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
-import {
-  getFirestore,
-  doc,
-  getDoc,
-} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBRMjjr5remFfzHiScxfmXK79JwWQ7c-3M",
@@ -19,13 +12,14 @@ const firebaseConfig = {
   measurementId: "G-4EEXFMT14S",
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    const email = user.email; // Use email as the document ID
+    const email = user.email;
     const userRef = doc(db, "userRoles", email);
     const userDoc = await getDoc(userRef);
 
