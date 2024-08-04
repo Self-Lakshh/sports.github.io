@@ -28,3 +28,35 @@ document.addEventListener("DOMContentLoaded", function () {
     sections[0].classList.add("active");
   }
 });
+
+function showDetails(
+  name,
+  role,
+  phone,
+  course,
+  item1,
+  available1,
+  requested1,
+  item2,
+  available2,
+  requested2
+) {
+  document.getElementById("user-name").innerText = name;
+  document.getElementById("user-role").innerText = role;
+  document.getElementById("user-phone").innerText = phone;
+  document.getElementById("user-course").innerText = course;
+
+  let itemsList = document.getElementById("items-list");
+  itemsList.innerHTML = `
+        <tr>
+            <td>${item1}</td>
+            <td>${available1}</td>
+            <td>${requested1}</td>
+        </tr>
+        <tr>
+            <td>${item2}</td>
+            <td>${available2}</td>
+            <td>${requested2}</td>
+        </tr>
+    `;
+}

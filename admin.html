@@ -13,10 +13,14 @@
         }
     </style>
     <link rel="stylesheet" href="css/golbal.css">
+
+
     <link rel="stylesheet" href="css/admin.css">
+
+
     <link rel="stylesheet" href="css/admincontent.css">
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+
     <!-- Bootstrap Icons CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -103,10 +107,91 @@
         </div>
 
         <!-- Pending Requests -->
-        <div id="pending-requests" class="content-section">Pending Requests Content</div>
+        <div id="pending-requests" class="content-section">
+            <div class="pr-container">
+                <div class="requests-panel">
+                    <h2>Recent Requests</h2>
+                    <ul id="requests-list">
+                        <!-- Dynamic list items will be inserted here by JavaScript -->
+                    </ul>
+                </div>
+                <div class="details-panel">
+                    <div class="user-info">
+                        <div class="req-details">
+                            <p><i class="bi bi-person-fill bt-icons"></i> <strong>Name:</strong> <span id="user-name">N/A</span></p>
+                            <p><i class="bi bi-award-fill bt-icons"></i> <strong>Role:</strong> <span id="user-role">N/A</span></p>
+                        </div>
+                        <div class="req-details">
+                            <p><i class="bi bi-telephone-fill bt-icons"></i> <strong>Phone no:</strong> <span id="user-phone">N/A</span></p>
+                            <p><i class="bi bi-person-vcard bt-icons"></i> <strong>Course:</strong> <span id="user-course">N/A</span></p>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Available</th>
+                                <th>Requested</th>
+                            </tr>
+                        </thead>
+                        <tbody id="items-list">
+                            <!-- Item rows will be inserted here -->
+                        </tbody>
+                    </table>
+                    <div class="item-usage-time">
+                        <label class="usage-text">Item Usage Time (in hr):</label>
+                        <div class="radio-group">
+                            <div class="custom-radio">
+                                <input type="radio" name="usage-time" value="3" id="usage-3">
+                                <label class="radio-label" for="usage-3">3</label>
+                            </div>
+                            <div class="custom-radio">
+                                <input type="radio" name="usage-time" value="6" id="usage-6">
+                                <label class="radio-label" for="usage-6">6</label>
+                            </div>
+                            <div class="custom-radio">
+                                <input type="radio" name="usage-time" value="12" id="usage-12">
+                                <label class="radio-label" for="usage-12">12</label>
+                            </div>
+                            <div class="custom-radio">
+                                <input type="radio" name="usage-time" value="24" id="usage-24">
+                                <label class="radio-label" for="usage-24">24</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button onclick="rejectRequest()">Reject Request</button>
+                        <button onclick="issueItems()">Issue Items</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Inventory -->
-        <div id="inventory" class="content-section">Inventory Content</div>
+        <div id="inventory" class="content-section">
+            <div class="inventory-container">
+                <div class="sports-list">
+                    <h2>Sports</h2>
+                    <ul id="sports-list">
+                        <!-- Sports names will be dynamically loaded here -->
+                    </ul>
+                </div>
+                <div class="inventory-details">
+                    <h2>Inventory Details</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventory-table">
+                            <!-- Inventory details will be dynamically loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
         <!-- reports -->
         <div id="reports" class="content-section">Reports Content</div>
@@ -128,18 +213,19 @@
     <!-- JS For auth bypass -->
     <script type="module" src="javascript/adminrole.js"></script>
 
-    <!-- Dashboard Js -->
-    <script type="module" src="javascript/dashboard.js"></script>
-
-
-
-
     <!-- Control pannel swithing js -->
     <script src="javascript/admincontent.js"></script>
 
-    <!-- Bootstrap JS and Popper.js (optional, for Bootstrap's JS components) -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <!-- Dashboard Js -->
+    <script type="module" src="javascript/dashboard.js"></script>
+
+    <!-- pending request Js -->
+    <script type="module" src="javascript/pendingreq.js"></script>
+
+    <!-- Manage Inventory JS -->
+    <script type="module" src="javascript/inventory.js"></script>
+    
+    
 </body>
 
 </html>
