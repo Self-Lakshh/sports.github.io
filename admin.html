@@ -49,7 +49,7 @@
         <div class="sidenav-items">
             <a href="#" class="active" data-target="dashboard"><i class="bi bi-speedometer2"></i>Dashboard</a>
             <a href="#" data-target="pending-requests"><i class="bi bi-hourglass"></i>Pending Requests</a>
-            <a href="#" data-target="retake-items"><i class="bi bi-arrow-clockwise"></i>Retake items</a>
+            <a href="#" data-target="return-items"><i class="bi bi-arrow-clockwise"></i>Retake items</a>
             <a href="#" data-target="inventory"><i class="bi bi-box-seam"></i>Inventory</a>
             <a href="#" data-target="reports"><i class="bi bi-file-spreadsheet"></i>Reports</a>
             <a href="#" data-target="activity-logs"><i class="bi bi-stack-overflow"></i>Activity Logs</a>
@@ -118,12 +118,16 @@
                 <div class="details-panel">
                     <div class="user-info">
                         <div class="req-details">
-                            <p><i class="bi bi-person-fill bt-icons"></i> <strong>Name:</strong> <span id="user-name">N/A</span></p>
-                            <p><i class="bi bi-award-fill bt-icons"></i> <strong>Role:</strong> <span id="user-role">N/A</span></p>
+                            <p><i class="bi bi-person-fill bt-icons"></i> <strong>Name:</strong> <span
+                                    id="user-name">N/A</span></p>
+                            <p><i class="bi bi-award-fill bt-icons"></i> <strong>Role:</strong> <span
+                                    id="user-role">N/A</span></p>
                         </div>
                         <div class="req-details">
-                            <p><i class="bi bi-telephone-fill bt-icons"></i> <strong>Phone no:</strong> <span id="user-phone">N/A</span></p>
-                            <p><i class="bi bi-person-vcard bt-icons"></i> <strong>Course:</strong> <span id="user-course">N/A</span></p>
+                            <p><i class="bi bi-telephone-fill bt-icons"></i> <strong>Phone no:</strong> <span
+                                    id="user-phone">N/A</span></p>
+                            <p><i class="bi bi-person-vcard bt-icons"></i> <strong>Course:</strong> <span
+                                    id="user-course">N/A</span></p>
                         </div>
                     </div>
                     <table>
@@ -193,6 +197,50 @@
             </div>
         </div>
 
+        <!-- Return Items -->
+        <div id="return-items" class="content-section">
+            <div class="ri-container">
+                <div class="requests-panel">
+                    <h2>Issued Requests</h2>
+                    <ul id="issued-requests-list">
+                        <!-- Dynamic list items will be inserted here by JavaScript -->
+                    </ul>
+                </div>
+                <div class="details-panel">
+                    <div class="user-info">
+                        <div class="req-details">
+                            <p><i class="bi bi-person-fill bt-icons"></i> <strong>Name:</strong> <span
+                                    id="user-name">N/A</span></p>
+                            <p><i class="bi bi-award-fill bt-icons"></i> <strong>Role:</strong> <span
+                                    id="user-role">N/A</span></p>
+                        </div>
+                        <div class="req-details">
+                            <p><i class="bi bi-telephone-fill bt-icons"></i> <strong>Phone no:</strong> <span
+                                    id="user-phone">N/A</span></p>
+                            <p><i class="bi bi-person-vcard bt-icons"></i> <strong>Course:</strong> <span
+                                    id="user-course">N/A</span></p>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Issued</th>
+                                <th>Return Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="issued-items-list">
+                            <!-- Item rows will be inserted here -->
+                        </tbody>
+                    </table>
+                    <div class="action-buttons">
+                        <button onclick="markItemsAsReturned()">Mark as Returned</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!-- reports -->
         <div id="reports" class="content-section">Reports Content</div>
 
@@ -201,9 +249,6 @@
 
         <!-- manage users -->
         <div id="manage-users" class="content-section">Manage Users Content</div>
-
-        <!-- manage events -->
-        <div id="retake-items" class="content-section">Manage Events Content</div>
 
 
     </div>
@@ -222,10 +267,13 @@
     <!-- pending request Js -->
     <script type="module" src="javascript/pendingreq.js"></script>
 
+    <!-- Retake Items JS -->
+    <script type="module" src="javascript/returnItems.js"></script>
+
     <!-- Manage Inventory JS -->
     <script type="module" src="javascript/inventory.js"></script>
-    
-    
+
+
 </body>
 
 </html>
