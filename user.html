@@ -3,70 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User page</title>
+
+    <title>SPSU Sports Erp</title>
+
     <link rel="shortcut icon" href="assets/spsu/favicon.png" type="png">
-    <link rel="stylesheet" href="css/userpage.css" />
-    <style>
-      /* Hide content initially */
-      #content {
-        display: none;
-      }
-    </style>
+    <link rel="stylesheet" href="css/user/userpage.css" />
+
   </head>
   <body id="content">
-    <div class="header">
-      <img src="assets/spsu/spsulogo.png" alt="Sports ERP Logo" />
-      <div class="head-link">
-        <a href="myreq.html">My Requests</a>
-      </div>
-    </div>
-    <div class="main">
-      <div class="sports-grid">
-        <div class="sport-card" data-sport="cricket">
-          <h3>Cricket</h3>
-        </div>
-        <div class="sport-card" data-sport="badminton">
-          <h3>Badminton</h3>
-        </div>
-        <div class="sport-card" data-sport="football">
-          <h3>Football</h3>
-        </div>
-        <div class="sport-card" data-sport="basketball">
-          <h3>Basketball</h3>
-        </div>
-        <div class="sport-card" data-sport="long_tennis">
-          <h3>Long Tennis</h3>
-        </div>
-        <div class="sport-card" data-sport="table_tennis">
-          <h3>Table Tennis</h3>
-        </div>
-      </div>
-    </div>
 
-    <!-- footer -->
-    <div class="footer">
-      <p>&copy; 2024 SPSU Sports ERP</p>
-    </div>
 
-    <!-- Modal Popup -->
-    <div id="popup-modal" class="modal">
-      <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <div class="form-container">
-          <div class="form-image">
-            <img src="assets/cover.jpg" alt="Form Image">
-          </div>
-          <div class="form-content">
-            <h2 id="modal-title">Sport Items</h2>
-            <div id="item-list"></div>
-            <button id="request-button">Request Items</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- js linking -->
-    <script type="module" src="javascript/userrole.js"></script> 
-    <script src="javascript/userpage.js"></script>
+
+    <!-- User Auth Js -->
+    <script type="module" src="javascript/module/user/user-page-auth.js"></script>
+
   </body>
 </html>
