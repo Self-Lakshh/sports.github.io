@@ -53,7 +53,7 @@ async function showDetails(requestId, data) {
     document.getElementById('user-name').innerText = data.name;
     document.getElementById('user-role').innerText = data.role;
     document.getElementById('user-phone').innerText = data.phone_no;
-    document.getElementById('user-course').innerText = data.course;
+    document.getElementById('user-program').innerText = data.program;
 
     let itemsList = document.getElementById('items-list');
     itemsList.innerHTML = ''; // Clear previous items

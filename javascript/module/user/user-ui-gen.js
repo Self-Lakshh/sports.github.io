@@ -80,28 +80,36 @@ document.addEventListener('DOMContentLoaded', function () {
                             if (querySnapshot.empty) {
                                 // Collect requested items as top-level fields
                                 const requestedItems = {};
+                                let anyItemSelected = false; // Flag to check if any item is selected
+
                                 for (const itemName of Object.keys(items)) {
                                     const quantityInput = document.getElementById(itemName);
                                     const requestedQuantity = quantityInput.value;
                                     if (requestedQuantity > 0) {
                                         requestedItems[itemName] = parseInt(requestedQuantity);
+                                        anyItemSelected = true; // Set flag to true if any item is selected
                                     }
                                 }
 
-                                const requestData = {
-                                    ...userData,
-                                    ...requestedItems,
-                                    status: 'pending',
-                                    reqdate: new Date(),
-                                    email: userEmail
-                                };
+                                if (anyItemSelected) {
+                                    const requestData = {
+                                        ...userData,
+                                        ...requestedItems,
+                                        status: 'pending',
+                                        reqdate: new Date(),
+                                        email: userEmail,
+                                        game: sportName
+                                    };
 
-                                addDoc(requestsRef, requestData).then(() => {
-                                    alert('Request successfully created!');
-                                    // Optionally, reset the UI or show a success message
-                                }).catch(error => {
-                                    console.log('Error creating request:', error);
-                                });
+                                    addDoc(requestsRef, requestData).then(() => {
+                                        alert('Request successfully created!');
+                                        // Optionally, reset the UI or show a success message
+                                    }).catch(error => {
+                                        console.log('Error creating request:', error);
+                                    });
+                                } else {
+                                    alert('No items selected. Please select at least one item before submitting your request.');
+                                }
                             } else {
                                 alert('You already have a pending request. Please wait for it to be processed before making another request.');
                             }
