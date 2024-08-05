@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const displayName = sportName.replace(/_/g, ' ');
         const card = document.createElement('div');
         card.classList.add('sport-card');
+        card.classList.add('poetsen-one-regular');
         card.textContent = displayName;
         card.addEventListener('click', () => displayItems(sportName));
         sportsContainer.appendChild(card);
