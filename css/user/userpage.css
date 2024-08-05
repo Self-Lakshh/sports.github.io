@@ -1,3 +1,60 @@
+/* Dont Touch This #content */
+
 #content {
   display: none;
+}
+
+/* other CSS */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#sports-container, #items-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.sport-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sport-card:hover {
+  background-color: #f0f0f0;
+}
+
+.item-div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item-div span {
+  flex: 1;
+}
+
+.item-div input {
+  width: 50px;
+  margin-left: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
 }
