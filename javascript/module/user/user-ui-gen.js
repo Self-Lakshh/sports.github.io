@@ -42,8 +42,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function displayItems(sportName) {
         sportsContainer.style.display = 'none';
-        itemsContainer.style.display = 'block';
+        itemsContainer.style.display = 'flex';
         itemsContainer.innerHTML = '';
+
+        const mainreqhold = document.createElement('div');
+        mainreqhold.classList.add('main-req-holder');
+
 
         const docRef = doc(db, 'inventory', sportName);
         getDoc(docRef).then(docSnap => {
@@ -57,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 `;
 
-                itemsContainer.appendChild(titlediv);
+                mainreqhold.appendChild(titlediv);
 
                 const checkouthead = document.createElement('div');
                 checkouthead.classList.add('checkout-holder');
@@ -68,25 +72,59 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 `;
 
-                itemsContainer.appendChild(checkouthead);
+                mainreqhold.appendChild(checkouthead);
+
+                
+                const allitems = document.createElement('div');
+                allitems.classList.add("all-items")
 
                 for (const [itemName, quantity] of Object.entries(items)) {
                     const displayItemName = itemName.replace('i_', '').replace(/_/g, ' ');
                     const itemDiv = document.createElement('div');
                     itemDiv.classList.add('item-div');
                     itemDiv.innerHTML = `
-                        <span class="lato-regular">${displayItemName}: ${quantity}</span>
-                        <input type="number" id="${itemName}" placeholder="Quantity" min="1" max="${quantity}">
+                        <span class="lato-regular">${displayItemName} <span class="avl-quantity">${quantity}</span></span>
+                        <div class="input-group">
+                            <button class="decrement">-</button>
+                            <input class="lato-regular" type="number" id="${itemName}" value="0" min="1" max="${quantity}">
+                            <button class="increment">+</button>
+                        </div>
                     `;
-                    // const allitems = document.createElement('div');
+                    allitems.appendChild(itemDiv)
 
-                    itemsContainer.appendChild(itemDiv);
+                    const decrementBtn = itemDiv.querySelector('.decrement');
+                    const incrementBtn = itemDiv.querySelector('.increment');
+                    const inputField = itemDiv.querySelector('input');
+
+                    decrementBtn.addEventListener('click', () => {
+                        let currentValue = parseInt(inputField.value);
+                        if (currentValue > 1) { // Prevent values below min
+                            inputField.value = currentValue - 1;
+                        }
+                    });
+                
+                    incrementBtn.addEventListener('click', () => {
+                        let currentValue = parseInt(inputField.value);
+                        if (currentValue < quantity) { // Prevent values above max
+                            inputField.value = currentValue + 1;
+                        }
+                    });
+
                 }
+                
+                mainreqhold.appendChild(allitems);
 
+                itemsContainer.appendChild(mainreqhold);
+
+                const reqbtnhold = document.createElement('div');
+                reqbtnhold.classList.add("req-btn-holder");
                 const requestBtn = document.createElement('button');
+                requestBtn.classList.add("req-btn");
                 requestBtn.textContent = 'Request Items';
                 requestBtn.addEventListener('click', () => requestItems(sportName, items));
-                itemsContainer.appendChild(requestBtn);
+                reqbtnhold.appendChild(requestBtn);
+                itemsContainer.appendChild(reqbtnhold);
+                
             } else {
                 console.log('No such document!');
             }

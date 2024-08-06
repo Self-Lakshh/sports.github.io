@@ -1,5 +1,6 @@
 :root {
     --spsu-color: #3D59A8;
     --spsu-color-dark: #3a4e86;
+    --mobile-text: #1E1E1E;
     --user-sp-card-back: radial-gradient(circle, rgba(254,183,28,1) 0%, rgba(191,154,0,1) 100%);
   }

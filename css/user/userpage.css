@@ -127,7 +127,7 @@ body {
 #sports-container {
   display: grid;
   padding: 15px;
-  grid-template-columns: 46% auto;
+  grid-template-columns: 48% 48%;
   column-gap: 15px;
   row-gap: 15px;
 }
@@ -147,13 +147,13 @@ body {
 
 .lato-regular {
   font-family: "Lato", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
 }
 
 .lato-bold {
   font-family: "Lato", sans-serif;
-  font-weight: 700;
+  font-weight: 800;
   font-style: normal;
 }
 
@@ -201,11 +201,24 @@ body {
   padding-left: 5px;
   justify-content: center;
   margin-bottom: 10px;
+  color: var(--mobile-text);
+}
+
+.all-items {
+  padding: 10px;
+}
+
+.avl-quantity {
+  display: none;
 }
 
 #items-container {
   display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+  flex-direction: column;
+}
+
+.main-req-holder {
   padding: 12px;
 }
 
@@ -213,6 +226,7 @@ body {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  color: var(--mobile-text) !important;
 }
 
 .item-div span {
@@ -224,15 +238,53 @@ body {
   margin-left: 10px;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-group button {
+  background-color: orange;
   border: none;
-  border-radius: 5px;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  color: white;
+  font-size: 20px;
   cursor: pointer;
+  padding: 0px;
+  align-self: center;
+  align-content: center;
+}
+.input-group input {
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  background-color: #e0e0e0;
+  font-size: 18px;
+  border-radius: 15px;
+  margin: 0 5px;
 }
 
-button:hover {
+.req-btn-holder {
+  position: absolute;
+  width: 100%;
+  top: 92.7%;
+}
+
+.req-btn {
+  padding: 14px 20px;
+  background: var(--user-sp-card-back);
+  color: white;
+  border: none;
+  font-size: 17px;
+  width: 100%;
+  cursor: pointer;
+  font-family: "Inter" !important;
+  font-weight: 600;
+}
+
+.req-btn:hover {
   background-color: #45a049;
 }
