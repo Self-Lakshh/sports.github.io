@@ -20,6 +20,7 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 document.addEventListener('DOMContentLoaded', function () {
+    const homebtn = document.getElementById('home-btn'); 
     const sportsContainer = document.getElementById('sports-container');
     const itemsContainer = document.getElementById('items-container');
 
@@ -132,6 +133,13 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Error getting document:', error);
         });
     }
+
+    function gethome() {
+        sportsContainer.style.display = 'grid';
+        itemsContainer.style.display = 'none';
+    }
+
+    homebtn.addEventListener('click', () => gethome());
 
     function requestItems(sportName, items) {
         onAuthStateChanged(auth, user => {
