@@ -42,6 +42,28 @@ document.addEventListener('DOMContentLoaded', function () {
         getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
                 const items = docSnap.data();
+
+                const titlediv = document.createElement('div');
+                titlediv.classList.add('title-holder');
+                titlediv.innerHTML = `
+                    <div class="title">
+                        <span class="poetsen-one-regular">${sportName}</span>
+                    </div>
+                `;
+
+                itemsContainer.appendChild(titlediv);
+
+                const checkouthead = document.createElement('div');
+                checkouthead.classList.add('checkout-holder');
+                checkouthead.innerHTML = `
+                    <div class="check-out-title">
+                        <span class="poetsen-one-regular">Make Your Request</span>
+                    </div>
+
+                `;
+
+                itemsContainer.appendChild(checkouthead);
+
                 for (const [itemName, quantity] of Object.entries(items)) {
                     const displayItemName = itemName.replace('i_', '').replace(/_/g, ' ');
                     const itemDiv = document.createElement('div');
@@ -50,6 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         <span>${displayItemName}: ${quantity}</span>
                         <input type="number" id="${itemName}" placeholder="Quantity" min="1" max="${quantity}">
                     `;
+                    // const allitems = document.createElement('div');
+
                     itemsContainer.appendChild(itemDiv);
                 }
 

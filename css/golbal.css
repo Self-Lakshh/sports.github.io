@@ -1,4 +1,5 @@
 :root {
     --spsu-color: #3D59A8;
     --spsu-color-dark: #3a4e86;
+    --user-sp-card-back: radial-gradient(circle, rgba(254,183,28,1) 0%, rgba(191,154,0,1) 100%);
   }
