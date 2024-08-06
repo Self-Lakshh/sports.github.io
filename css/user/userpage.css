@@ -1,6 +1,8 @@
 /* font imports */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@1,14..32,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@1,14..32,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 /* Dont Touch This #content */
 
@@ -125,7 +127,7 @@ body {
 #sports-container {
   display: grid;
   padding: 15px;
-  grid-template-columns: 48% auto;
+  grid-template-columns: 46% auto;
   column-gap: 15px;
   row-gap: 15px;
 }
@@ -133,6 +135,25 @@ body {
 .poetsen-one-regular {
   font-family: "Poetsen One", sans-serif;
   font-weight: 400;
+  font-style: normal;
+}
+
+.inter-blkit {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -144,7 +165,7 @@ body {
   transition: background-color 0.3s;
   height: 150px;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   text-align: center;
   align-content: end;
   

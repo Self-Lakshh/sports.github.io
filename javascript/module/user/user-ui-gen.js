@@ -23,14 +23,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const sportsContainer = document.getElementById('sports-container');
     const itemsContainer = document.getElementById('items-container');
 
+
+    
     function createSportCard(sportName) {
-        const displayName = sportName.replace(/_/g, ' ');
+        const sportName_cap = sportName.toUpperCase();
+        const displayName = sportName_cap.replace(/_/g, ' ');
         const card = document.createElement('div');
         card.classList.add('sport-card');
-        card.classList.add('poetsen-one-regular');
+        card.classList.add('inter-blkit');
         card.textContent = displayName;
         card.addEventListener('click', () => displayItems(sportName));
         sportsContainer.appendChild(card);
+    }
+
+    function toUpperCase(str) {
+        return str.toUpperCase();
     }
 
     function displayItems(sportName) {
@@ -42,12 +49,11 @@ document.addEventListener('DOMContentLoaded', function () {
         getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
                 const items = docSnap.data();
-
                 const titlediv = document.createElement('div');
                 titlediv.classList.add('title-holder');
                 titlediv.innerHTML = `
                     <div class="title">
-                        <span class="poetsen-one-regular">${sportName}</span>
+                        <span class="inter-blkit">${toUpperCase(sportName)}</span>
                     </div>
                 `;
 
@@ -57,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 checkouthead.classList.add('checkout-holder');
                 checkouthead.innerHTML = `
                     <div class="check-out-title">
-                        <span class="poetsen-one-regular">Make Your Request</span>
+                        <span class="lato-bold">Make Your Request</span>
                     </div>
 
                 `;
@@ -69,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const itemDiv = document.createElement('div');
                     itemDiv.classList.add('item-div');
                     itemDiv.innerHTML = `
-                        <span>${displayItemName}: ${quantity}</span>
+                        <span class="lato-regular">${displayItemName}: ${quantity}</span>
                         <input type="number" id="${itemName}" placeholder="Quantity" min="1" max="${quantity}">
                     `;
                     // const allitems = document.createElement('div');
