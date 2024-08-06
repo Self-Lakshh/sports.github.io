@@ -206,6 +206,8 @@ body {
 
 .all-items {
   padding: 10px;
+  overflow: auto;
+  max-height: 365px;
 }
 
 .avl-quantity {
@@ -220,6 +222,7 @@ body {
 
 .main-req-holder {
   padding: 12px;
+  padding-bottom: 0px;
 }
 
 .item-div {
