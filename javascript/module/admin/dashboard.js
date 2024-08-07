@@ -7,6 +7,8 @@ import {
   getFirestore,
   collection,
   getDocs,
+  query,
+  where
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -36,5 +38,58 @@ async function updateDocumentCount() {
   }
 }
 
-// Call the function to update the document count
+async function updatePendingRequestsCount() {
+  try {
+    const requestsCollection = collection(db, 'requests');
+    const q = query(requestsCollection, where('status', '==', 'pending'));
+    const snapshot = await getDocs(q);
+    const pendingCount = snapshot.size;
+
+    // Update the inner HTML of the element with the ID 'pending-requests'
+    document.getElementById('pending-requests').innerHTML = `${pendingCount}`;
+  } catch (error) {
+    console.error("Error fetching pending requests count: ", error);
+  }
+}
+
+async function updateRejectedRequestsCount() {
+  try {
+    const requestsCollection = collection(db, 'requests');
+    const q = query(requestsCollection, where('status', '==', 'rejected'));
+    const snapshot = await getDocs(q);
+    const rejectedCount = snapshot.size;
+
+    // Update the inner HTML of the element with the ID 'rejected-requests'
+    document.getElementById('rejected-requests').innerHTML = `${rejectedCount}`;
+  } catch (error) {
+    console.error("Error fetching rejected requests count: ", error);
+  }
+}
+
+async function updateInventoryItemCount() {
+  try {
+    const inventoryCollection = collection(db, 'inventory');
+    const snapshot = await getDocs(inventoryCollection);
+    
+    let totalItemCount = 0;
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      for (const key in data) {
+        if (data.hasOwnProperty(key) && typeof data[key] === 'number') {
+          totalItemCount += data[key];
+        }
+      }
+    });
+
+    // Update the inner HTML of the element with the ID 'total-inventory-items'
+    document.getElementById('total-inventory-items').innerHTML = `${totalItemCount}`;
+  } catch (error) {
+    console.error("Error fetching inventory item count: ", error);
+  }
+}
+
+// Call the functions to update the counts
 updateDocumentCount();
+updatePendingRequestsCount();
+updateRejectedRequestsCount();
+updateInventoryItemCount();
