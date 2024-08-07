@@ -10,6 +10,80 @@
   display: none;
 }
 
+/* Webviews  */
+
+
+.main-mobile {
+  display: none;
+}
+
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 40px;
+  text-align: center;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 4px 20px hsla(207, 24%, 35%, 0.1);
+}
+
+.popup-content h2 {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.popup-content p {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.popup-content button {
+  padding: 15px 25px;
+  font-size: 18px;
+  color: #fff;
+  background: var(--user-sp-card-back);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+.downlodbtn {
+  margin-right: 15px;
+}
+
+.popup-content button:hover {
+  background: var(--user-sp-card-back);
+}
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 767px) {
+  #popup {
+      display: none;
+  }
+
+  .main-mobile {
+      display: block;
+  }
+}
+
+
 * {
   padding: 0;
   margin: 0;
@@ -260,7 +334,7 @@ body {
   justify-content: center;
 }
 .input-group button {
-  background-color: orange;
+  background-color: #ffa500;
   border: none;
   border-radius: 50%;
   width: 25px;
@@ -302,5 +376,5 @@ body {
 }
 
 .req-btn:hover {
-  background-color: #45a049;
+  background-color: var(--user-sp-card-back);
 }

@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>SPSU Sports Erp</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="assets/spsu/favicon.png" type="png">
-    <link rel="stylesheet" href="css/user/userpage.css" />
-    <link rel="stylesheet" href="css/golbal.css">
+  <title>SPSU Sports Erp</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="shortcut icon" href="assets/spsu/favicon.png" type="png">
+  <link rel="stylesheet" href="css/user/userpage.css" />
+  <link rel="stylesheet" href="css/golbal.css">
 
-  </head>
-  <body id="content">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+</head>
+
+<body id="content">
+
+  <section class="main-mobile">
     <!-- Navbar -->
     <header class="header">
       <nav>
@@ -32,18 +35,42 @@
     </header>
 
 
-    <div id="sports-container"></div>
-    <div id="items-container" style="display: none;"></div>
+    <div id="sports-container">
+      <!-- Dynamic insertion -->
+    </div>
+    <div id="items-container" style="display: none;">
+      <!-- Dynamic insertion -->
+    </div>
+  </section>
 
-    
-    <!-- User Auth Js -->
-    <script type="module" src="javascript/module/user/user-page-auth.js"></script>
-    
-    <!-- User UI Dynamic Gen JS -->
-    <script type="module" src="javascript/module/user/user-ui-gen.js"></script>
-    
-    <!-- input wokring Js -->
-     <script src="javascript/normal/user/input-btn.js"></script>
+  <!-- For web user -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <h2>SPSU Sports Erp</h2>
+      <p>Please open the <span style="font-weight: 700;">Website in mobile</span> or Download the App.</p>
+      <button class="downlodbtn" onclick="downloadApp()">Download for Android</button>
+      <button onclick="downloadAppios()">Download for IOS</button>
+    </div>
+  </div>
 
-  </body>
+  <script>
+    function downloadApp() {
+      // Replace with the actual link to download your app
+      window.location.href = 'https://example.com/download-app';
+    }
+
+  </script>
+
+
+  <!-- User Auth Js -->
+  <script type="module" src="javascript/module/user/user-page-auth.js"></script>
+
+  <!-- User UI Dynamic Gen JS -->
+  <script type="module" src="javascript/module/user/user-ui-gen.js"></scrip >
+
+      <!-- input wokring Js -->
+      <script src="javascript/normal/user/input-btn.js"></script>
+
+</body>
+
 </html>
