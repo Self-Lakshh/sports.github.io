@@ -32,7 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const card = document.createElement('div');
         card.classList.add('sport-card');
         card.classList.add('inter-blkit');
-        card.textContent = displayName;
+        // card.textContent = displayName;
+        card.innerHTML = `
+            <img class="card-img" src="assets/sports/${sportName}.png"></img>
+            <span class="card-text">${displayName}</span>
+        `;
         card.addEventListener('click', () => displayItems(sportName));
         sportsContainer.appendChild(card);
     }

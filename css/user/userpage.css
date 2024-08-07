@@ -136,6 +136,15 @@ body {
   row-gap: 15px;
 }
 
+.card-img {
+  max-height: -webkit-fill-available;
+}
+
+.card-text {
+  position: relative;
+  top: -25%;
+}
+
 .poetsen-one-regular {
   font-family: "Poetsen One", sans-serif;
   font-weight: 400;
@@ -163,13 +172,13 @@ body {
 
 .sport-card {
   border-radius: 10px;
-  padding: 15px;
+  padding: 12px;
   cursor: pointer;
   background: var(--user-sp-card-back);
   transition: background-color 0.3s;
   height: 150px;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   align-content: end;
   
