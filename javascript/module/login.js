@@ -38,7 +38,8 @@ googleLogin.addEventListener("click", function() {
             const preErpDoc = await getDoc(preErpRef);
 
             if (!preErpDoc.exists()) {
-                console.error("preErp document does not exist.");
+                console.error("Your email Not Found.");
+                alert('You are not allowed to use this Website. Contact SPSU Sports Department for resloving this issue.')
                 return;
             }
 
