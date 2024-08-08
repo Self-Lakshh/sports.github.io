@@ -3,6 +3,8 @@ import { auth, db, doc, getDoc, collection, getDocs, addDoc, query, where, onAut
 const requestsList = document.getElementById('requests-list');
 const modal = document.getElementById('request-details-modal');
 const requestItems = document.getElementById('request-items');
+const reqDataElement = document.getElementById('request-data');
+const returnTimeElement = document.getElementById('return-time');
 
 // Fetch requests for the authenticated user by email
 async function fetchUserRequests(email) {
@@ -28,9 +30,28 @@ async function fetchUserRequests(email) {
     });
 }
 
+// Format timestamp to readable date string
+function formatTimestamp(timestamp) {
+    if (!timestamp) return 'N/A';
+    const date = timestamp.toDate(); // Convert Firestore timestamp to JavaScript Date
+    return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+}
+
 // Show request details in a modal
 function showRequestDetails(requestData) {
     requestItems.innerHTML = ''; // Clear previous items
+    reqDataElement.innerHTML = ''; // Clear previous reqdata
+    returnTimeElement.innerHTML = ''; // Clear previous return time
+    
+    // Display request data
+    if (requestData.reqdata) {
+        reqDataElement.textContent = `Request Data: ${requestData.reqdata}`;
+    }
+    
+    // Display return time if the status is "issued"
+    if (requestData.status === 'issued' && requestData.return_time) {
+        returnTimeElement.textContent = `Return Time: ${formatTimestamp(requestData.return_time)}`;
+    }
     
     // Iterate through all keys in requestData
     for (const [key, value] of Object.entries(requestData)) {

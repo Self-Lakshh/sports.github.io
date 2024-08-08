@@ -297,3 +297,91 @@ nav {
     align-items: center;
   }
 }
+
+/* Modal styles for request details */
+#request-details-modal {
+  display: none; /* Hidden by default, shown when triggered */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Dark overlay background */
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.modal-content h2 {
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000;
+}
+
+.request-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.request-card h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.request-card p {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+/* Responsive styles for modal */
+@media only screen and (max-width: 767px) {
+  #request-details-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .modal-content h2 {
+    font-size: 20px;
+  }
+
+  .modal-content p {
+    font-size: 16px;
+  }
+}
