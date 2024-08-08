@@ -20,8 +20,10 @@ const db = getFirestore(app);
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     const email = user.email;
+    
     const userRef = doc(db, "userRoles", email);
     const userDoc = await getDoc(userRef);
+   
 
     if (!userDoc.exists() || userDoc.data().role !== "user") {
       window.location.href = "index.html";
