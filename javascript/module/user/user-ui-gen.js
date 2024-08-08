@@ -2,9 +2,16 @@ import { auth, db, doc, getDoc, collection, getDocs, addDoc, query, where, onAut
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const homebtn = document.getElementById('home-btn'); 
+    const homebtn = document.getElementById('home-btn');
+    const homebtn_logo = document.getElementById('home-btn-logo');
     const sportsContainer = document.getElementById('sports-container');
     const itemsContainer = document.getElementById('items-container');
+
+    function capitalizeWords(str) {
+        return str.split(' ').map(word => {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }).join(' ');
+    }
     
     function createSportCard(sportName) {
         const sportName_cap = sportName.toUpperCase();
@@ -29,11 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
         sportsContainer.style.display = 'none';
         itemsContainer.style.display = 'flex';
         itemsContainer.innerHTML = '';
-
+    
         const mainreqhold = document.createElement('div');
         mainreqhold.classList.add('main-req-holder');
-
-
+    
         const docRef = doc(db, 'inventory', sportName);
         getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
@@ -45,66 +51,73 @@ document.addEventListener('DOMContentLoaded', function () {
                         <span class="inter-blkit">${toUpperCase(sportName)}</span>
                     </div>
                 `;
-
+    
                 mainreqhold.appendChild(titlediv);
-
+    
                 const checkouthead = document.createElement('div');
                 checkouthead.classList.add('checkout-holder');
                 checkouthead.innerHTML = `
                     <div class="check-out-title">
                         <span class="lato-bold">Make Your Request</span>
                     </div>
-
                 `;
-
+    
                 mainreqhold.appendChild(checkouthead);
-
-                
+    
                 const allitems = document.createElement('div');
-                allitems.classList.add("all-items")
-
+                allitems.classList.add('all-items');
+    
                 for (const [itemName, quantity] of Object.entries(items)) {
                     const displayItemName = itemName.replace('i_', '').replace(/_/g, ' ');
+                    const perf_displayItemName = capitalizeWords(displayItemName);
                     const itemDiv = document.createElement('div');
                     itemDiv.classList.add('item-div');
-                    itemDiv.innerHTML = `
-                        <span class="lato-regular">${displayItemName} <span class="avl-quantity">${quantity}</span></span>
-                        <div class="input-group">
-                            <button class="decrement">-</button>
-                            <input class="lato-regular" type="number" id="${itemName}" value="0" min="1" max="${quantity}">
-                            <button class="increment">+</button>
-                        </div>
-                    `;
-                    allitems.appendChild(itemDiv)
-
-                    const decrementBtn = itemDiv.querySelector('.decrement');
-                    const incrementBtn = itemDiv.querySelector('.increment');
-                    const inputField = itemDiv.querySelector('input');
-
-                    decrementBtn.addEventListener('click', () => {
-                        let currentValue = parseInt(inputField.value);
-                        if (currentValue > 1) { // Prevent values below min
-                            inputField.value = currentValue - 1;
-                        }
-                    });
-                
-                    incrementBtn.addEventListener('click', () => {
-                        let currentValue = parseInt(inputField.value);
-                        if (currentValue < quantity) { // Prevent values above max
-                            inputField.value = currentValue + 1;
-                        }
-                    });
-
+                    
+                    // Check if the quantity is 0
+                    if (quantity === 0) {
+                        itemDiv.innerHTML = `
+                            <span class="lato-regular">${perf_displayItemName}</span>
+                            <span class="not-available">Not Available</span>
+                        `;
+                    } else {
+                        itemDiv.innerHTML = `
+                            <span class="lato-regular">${perf_displayItemName} <span class="avl-quantity">${quantity}</span></span>
+                            <div class="input-group">
+                                <button class="decrement">-</button>
+                                <input class="lato-regular" type="number" id="${itemName}" value="0" min="0" max="${quantity}">
+                                <button class="increment">+</button>
+                            </div>
+                        `;
+    
+                        const decrementBtn = itemDiv.querySelector('.decrement');
+                        const incrementBtn = itemDiv.querySelector('.increment');
+                        const inputField = itemDiv.querySelector('input');
+    
+                        decrementBtn.addEventListener('click', () => {
+                            let currentValue = parseInt(inputField.value);
+                            if (currentValue > 0) { // Prevent values below min
+                                inputField.value = currentValue - 1;
+                            }
+                        });
+    
+                        incrementBtn.addEventListener('click', () => {
+                            let currentValue = parseInt(inputField.value);
+                            if (currentValue < quantity) { // Prevent values above max
+                                inputField.value = currentValue + 1;
+                            }
+                        });
+                    }
+    
+                    allitems.appendChild(itemDiv);
                 }
-                
+    
                 mainreqhold.appendChild(allitems);
-
                 itemsContainer.appendChild(mainreqhold);
-
+    
                 const reqbtnhold = document.createElement('div');
-                reqbtnhold.classList.add("req-btn-holder");
+                reqbtnhold.classList.add('req-btn-holder');
                 const requestBtn = document.createElement('button');
-                requestBtn.classList.add("req-btn");
+                requestBtn.classList.add('req-btn');
                 requestBtn.textContent = 'Request Items';
                 requestBtn.addEventListener('click', () => requestItems(sportName, items));
                 reqbtnhold.appendChild(requestBtn);
@@ -117,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Error getting document:', error);
         });
     }
+    
 
     function gethome() {
         sportsContainer.style.display = 'grid';
@@ -124,6 +138,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     homebtn.addEventListener('click', () => gethome());
+    homebtn_logo.addEventListener('click', () => gethome());
+
+    window.addEventListener('popstate', function(event) {
+        // Custom logic when back button is pressed
+        if (event.state) {
+            gethome();
+        } else {
+            gethome();
+        }
+    });
 
     function requestItems(sportName, items) {
         onAuthStateChanged(auth, user => {

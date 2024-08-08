@@ -376,10 +376,12 @@ body {
   border-radius: 10px;
   padding: 15px;
   background: var(--user-sp-card-back);
-  height: 115px;
+  /* height: px; */
   color: white;
   text-align: center;
   align-content: end;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
 }
 
 .title > span {
@@ -483,4 +485,11 @@ body {
 
 .req-btn:hover {
   background-color: var(--user-sp-card-back);
+}
+
+.not-available {
+  flex: none !important;
+  padding-right: 6px;
+  color: red;
+  font-weight: 600;
 }
