@@ -21,18 +21,21 @@
     <!-- Navbar -->
     <header class="header">
       <nav>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon"><i class="bi bi-list"></i></label>
+        <ul class="menu">
+          <li><a class="close-menu" onclick="document.getElementById('menu-toggle').checked = false;"><i class="bi bi-caret-left-fill"></i></a></li>
+          <li id="home-btn" onclick="document.getElementById('menu-toggle').checked = false;" ><a><i class="bi bi-house-fill"></i> Home</a></li>
+          <li><a href="#" onclick="document.getElementById('menu-toggle').checked = false;"><i class="bi bi-backpack-fill"></i> My Requests</a></li>
+          <li><a href="#" onclick="document.getElementById('menu-toggle').checked = false;"><i class="bi bi-question-circle-fill"></i> About</a></li>
+        </ul>
+    
         <div class="logo">
           <a href="index.html"><img src="assets/spsu/erplogo.png"></a>
         </div>
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
-        <ul class="menu">
-          <li id="home-btn"><a><i class="bi bi-house-fill"></i> Home</a></li>
-          <li><a href="#"><i class="bi bi-backpack-fill"></i> My Requests</a></li>
-          <li><a href="#"><i class="bi bi-question-circle-fill"></i> About</a></li>
-        </ul>
       </nav>
     </header>
+    
 
 
     <div id="sports-container">

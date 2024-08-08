@@ -46,7 +46,7 @@ async function updatePendingRequestsCount() {
     const pendingCount = snapshot.size;
 
     // Update the inner HTML of the element with the ID 'pending-requests'
-    document.getElementById('pending-requests').innerHTML = `${pendingCount}`;
+    document.getElementById('pending-requests-stats').innerHTML = `${pendingCount}`;
   } catch (error) {
     console.error("Error fetching pending requests count: ", error);
   }
