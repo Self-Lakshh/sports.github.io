@@ -271,10 +271,11 @@ nav {
   .pow-by {
     display: flex;
     align-self: center;
-    margin-top: 140%;
+    margin-top: 122%;
     font-size: 14px !important;
     text-align: center;
     opacity: 80%;
+    padding-right: 15px;
   }
   .pow-by i {
     font-size: 12px;
