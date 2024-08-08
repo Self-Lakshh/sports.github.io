@@ -235,6 +235,9 @@ async function issueItems() {
                 alert(`Failed to send email`);
             });
     }
+    else {
+        alert('please select the duration for issue.')
+    }
 }
 
 
