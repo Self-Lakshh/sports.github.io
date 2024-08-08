@@ -1,52 +1,10 @@
-// Import the Firebase libraries
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-import { getFirestore, collection, doc, getDocs, getDoc, addDoc, query, where } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
-import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
+import { auth, db, doc, getDoc, collection, getDocs, addDoc, query, where, onAuthStateChanged } from '../firebase_config.js';
 
-// Your Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyBRMjjr5remFfzHiScxfmXK79JwWQ7c-3M",
-    authDomain: "login-lakshh.firebaseapp.com",
-    projectId: "login-lakshh",
-    storageBucket: "login-lakshh.appspot.com",
-    messagingSenderId: "214721614258",
-    appId: "1:214721614258:web:c3bebff238d815d25994ab",
-    measurementId: "G-4EEXFMT14S",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
 
 document.addEventListener('DOMContentLoaded', function () {
     const homebtn = document.getElementById('home-btn'); 
     const sportsContainer = document.getElementById('sports-container');
     const itemsContainer = document.getElementById('items-container');
-    const User_name = document.getElementById('user-name');
-    const User_program = document.getElementById('user-program');
-
-    UserProfile();
-
-    function UserProfile() {
-        onAuthStateChanged(auth, user => {
-            if(user) {
-                const userEmail = user.email;
-                const userDocRef = doc(db, 'userRoles', userEmail);
-                getDoc(userDocRef).then(userDocSnap => {
-                    if (userDocSnap.exists()) {
-                        const userData = userDocSnap.data();
-                        const Username = userData.name;
-                        const Userprogram = userData.program;
-                        User_name.innerText = `${Username}`;
-                        User_program.innerText = `${Userprogram}`;
-                    }
-                })
-            }
-        })
-    }
-
-
     
     function createSportCard(sportName) {
         const sportName_cap = sportName.toUpperCase();
