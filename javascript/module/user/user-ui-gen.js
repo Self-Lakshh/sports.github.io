@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         card.classList.add('inter-blkit');
         // card.textContent = displayName;
         card.innerHTML = `
-            <img class="card-img" src="assets/sports/${sportName}.webp"></img>
+            <img onclick="document.getElementById('menu-toggle').checked = false;" class="card-img" src="assets/sports/${sportName}.webp"></img>
             <span class="card-text">${displayName}</span>
         `;
         card.addEventListener('click', () => displayItems(sportName));
