@@ -56,15 +56,34 @@
 
           <!-- Logout Btn -->
            <div class="logout-holder">
-            <a href="/index.html"><i class="bi bi-box-arrow-left"></i>LOGOUT</a>
+            <a href="../../index.html"><i class="bi bi-box-arrow-left"></i>LOGOUT</a>
            </div>
         </div>
 
         <div class="logo">
-          <a href="/index.html"><img src="/assets/spsu/erplogo.png"></a>
+          <a href="../../index.html"><img src="/assets/spsu/erplogo.png"></a>
         </div>
       </nav>
     </header>
+
+    <!-- Request List -->
+  <div class="container">
+    <h1>Your Requests</h1>
+    <div id="requests-list">
+      <!-- Requests will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <!-- Modal for displaying request details -->
+  <div id="request-details-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+      <h2>Request Details</h2>
+      <div id="request-items">
+        <!-- Request items will be displayed here -->
+      </div>
+    </div>
+  </div>
 
   </section>
 
@@ -83,6 +102,15 @@
       // Replace with the actual link to download your app
       window.location.href = 'https://warehouse.appilix.com/uploads/app-apk-66b48defb2f3c-1723108847.apk';
     }
+
+    function downloadAppios() {
+      // Replace with the actual link to download your app for iOS
+      window.location.href = 'https://warehouse.appilix.com/uploads/app-ios-66b48defb2f3c-1723108847.ipa';
+    }
+
+    function closeModal() {
+      document.getElementById('request-details-modal').style.display = 'none';
+    }
   </script>
 
   <!-- User Auth Js -->
@@ -90,6 +118,9 @@
 
   <!-- User Profile Gen JS -->
   <script type="module" src="/javascript/module/user/user-profile.js"></script>
+
+   <!-- Requests and Modal Handling -->
+   <script type="module" src="/javascript/module/user/user-requests.js"></script>
 
 </body>
 

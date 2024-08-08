@@ -166,6 +166,8 @@ async function issueItems() {
 
         alert(`items issued. to user ${name}.`);
 
+        fetchPendingRequests();
+
 
         // Prepare email template parameters
         let templateParams = {
@@ -238,5 +240,5 @@ async function issueItems() {
 
 
 // Attach event listeners
-document.querySelector('.action-buttons').querySelectorAll('button')[0].addEventListener('click', rejectRequest);
-document.querySelector('.action-buttons').querySelectorAll('button')[1].addEventListener('click', issueItems);
+document.getElementById('reject-btn').addEventListener('click', rejectRequest);
+document.getElementById('issue-btn').addEventListener('click', issueItems);
