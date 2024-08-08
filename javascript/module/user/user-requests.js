@@ -22,11 +22,24 @@ async function fetchUserRequests(email) {
         const requestCard = document.createElement('div');
         requestCard.className = 'request-card';
         requestCard.innerHTML = `
-            <h3>${requestData.game}</h3>
-            <p>Status: ${requestData.status}</p>
+            <div class="req-small-info">
+                <h3>${requestData.game}</h3>
+                <p><strong>Status:</strong><a class="${requestData.status}"> ${requestData.status}</a></p>
+            </div>
         `;
+
+        
+        const reqimg = document.createElement('div');
+        reqimg.classList.add('sports-img');
+        reqimg.innerHTML = `
+            <img src="/assets/sports/${requestData.game}.webp"></img>
+        `;
+
+        requestCard.appendChild(reqimg);
         requestCard.onclick = () => showRequestDetails(requestData);
         requestsList.appendChild(requestCard);
+
+
     });
 }
 
@@ -63,8 +76,9 @@ function showRequestDetails(requestData) {
             requestItems.appendChild(itemElement);
         }
     }
+
+    modal.style.display = 'flex';
     
-    modal.style.display = 'block';
 }
 
 // Initialize the page with the authenticated user's requests

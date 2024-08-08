@@ -302,16 +302,52 @@ nav {
 #request-details-modal {
   display: none; /* Hidden by default, shown when triggered */
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8); /* Dark overlay background */
   z-index: 1000;
   justify-content: center;
+  background: #0a0a0a79;
   align-items: center;
+  top: 0;
+  left: 0;
 }
 
+
+#requests-list {
+  border-bottom: 0.5px solid #ddd;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+.sports-img img{
+  height: 40px;
+  width: 40px;
+}
+.sports-img {
+  background: var(--user-sp-card-back);
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pending {
+  color: blue;
+  font-weight: 600;
+}
+
+.rejected {
+  font-weight: 600;
+  color: red;
+}
+
+.issued {
+  font-weight: 600;
+  color: green;
+}
+
+.returned {
+  font-weight: 600;
+  color: gray;
+}
 .modal-content {
   background: #fff;
   padding: 20px;
@@ -321,6 +357,16 @@ nav {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   position: relative;
 }
+
+.rq-container h1 i {
+  color: #0a0a0a;
+  padding-right: 8px;
+}
+
+.rq-container h1 {
+  padding-bottom: 15px;
+}
+
 
 .modal-content h2 {
   font-family: "Lato", sans-serif;
@@ -345,12 +391,13 @@ nav {
 
 .request-card {
   background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 0.5px solid #ddd;
+  border-bottom: none;
   padding: 15px;
-  margin: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .request-card h3 {
@@ -364,10 +411,15 @@ nav {
   font-size: 16px;
 }
 
+.main-req-shower {
+  padding: 15px;
+  font-family: "Inter" !important;
+}
+
 /* Responsive styles for modal */
 @media only screen and (max-width: 767px) {
   #request-details-modal {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
   }
