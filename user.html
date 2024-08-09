@@ -20,6 +20,7 @@
   <section class="main-mobile">
     <!-- Navbar -->
     <header class="header">
+
       <nav>
         <input type="checkbox" id="menu-toggle">
         <label for="menu-toggle" class="menu-icon"><i class="bi bi-list"></i></label>
@@ -36,25 +37,32 @@
           <!-- Navigation items -->
 
           <div class="nav-holder">
-            <a class="nav-title">MENU</a>
-            <div class="nav-items">
-              <li><a class="close-menu" onclick="document.getElementById('menu-toggle').checked = false;"><i
-                    class="bi bi-caret-left-fill"></i></a></li>
-              <li id="home-btn" onclick="document.getElementById('menu-toggle').checked = false;"><a><i
-                    class="bi bi-house-fill"></i>Home</a></li>
-              <li><a href="pages/user/myrequest.html"
-                  onclick="document.getElementById('menu-toggle').checked = false;"><i
-                    class="bi bi-cart-plus-fill"></i>My Requests</a></li>
-              <li><a href="#" onclick="document.getElementById('menu-toggle').checked = false;"><i
-                    class="bi bi-broadcast"></i>Events</a></li>
-              <li><a onclick="document.getElementById('menu-toggle').checked = false; downloadApp()"><i
-                    class="bi bi-arrow-down-circle-fill"></i>Download App</a></li>
-              <li><a href="#" onclick="document.getElementById('menu-toggle').checked = false;"><i
-                    class="bi bi-question-circle-fill"></i>About us</a></li>
+
+            <div class="nav-hold1">
+              <a class="nav-title">MENU</a>
+              <div class="nav-items">
+                <li><a class="close-menu" onclick="document.getElementById('menu-toggle').checked = false;"><i
+                      class="bi bi-caret-left-fill"></i></a></li>
+                <li id="home-btn" onclick="document.getElementById('menu-toggle').checked = false;"><a><i
+                      class="bi bi-house-fill"></i>Home</a></li>
+                <li><a href="pages/user/myrequest.html"
+                    onclick="document.getElementById('menu-toggle').checked = false;"><i
+                      class="bi bi-cart-plus-fill"></i>My Requests</a></li>
+                <li><a href="#" onclick="document.getElementById('menu-toggle').checked = false;"><i
+                      class="bi bi-broadcast"></i>Events</a></li>
+                <li><a onclick="document.getElementById('menu-toggle').checked = false; downloadApp()"><i
+                      class="bi bi-arrow-down-circle-fill"></i>Download App</a></li>
+                <li><a href="#" onclick="document.getElementById('menu-toggle').checked = false;"><i
+                      class="bi bi-question-circle-fill"></i>About us</a></li>
+              </div>
             </div>
-            <a class="pow-by">
-              <i class="bi bi-lightning-fill"></i> Powerd by SPSU
-            </a>
+
+            <div class="nav-hold2">
+              <a class="pow-by">
+                <i class="bi bi-lightning-fill"></i> Powerd by SPSU
+              </a>
+            </div>
+
           </div>
 
           <!-- Logout Btn -->

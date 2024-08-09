@@ -229,8 +229,8 @@ nav {
     display: flex;
     flex-direction: column;
     padding: 12px;
-    height: 78%;
-    border-bottom: 1px solid #d9d9d9;
+    justify-content: space-between;
+    height: -webkit-fill-available;
   }
   .nav-title {
     font-size: 12px !important;
@@ -271,7 +271,6 @@ nav {
   .pow-by {
     display: flex;
     align-self: center;
-    margin-top: 122%;
     font-size: 14px !important;
     text-align: center;
     opacity: 80%;
@@ -291,6 +290,8 @@ nav {
     display: flex;
     width: 100%;
     padding: 15px;
+    border-top: 1px solid #d9d9d9;
+
   }
   .logout-holder a {
     text-align: center;
@@ -403,7 +404,7 @@ body {
 .all-items {
   padding: 10px;
   overflow: auto;
-  max-height: 365px;
+  max-height: 408px;
 }
 
 .avl-quantity {
@@ -469,7 +470,7 @@ body {
 .req-btn-holder {
   position: absolute;
   width: 100%;
-  top: 92.7%;
+  bottom: 0px;
 }
 
 .req-btn {
