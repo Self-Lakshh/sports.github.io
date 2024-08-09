@@ -173,6 +173,8 @@ nav {
     transition: transform 0.5s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     z-index: 2;
+    padding-bottom: 0px;
+    padding-top: 0px;
   }
 
   .menu a {
@@ -201,6 +203,7 @@ nav {
     width: 100%;
     align-items: center;
     padding-bottom: 25px;
+    padding-top: 25px;
     border-bottom: 1px solid #d9d9d9;
   }
 
@@ -238,6 +241,7 @@ nav {
   }
   .nav-items {
     padding-left: 5px;
+    padding-top: 5px;
   }
   .nav-items li a i {
     padding-right: 10px;

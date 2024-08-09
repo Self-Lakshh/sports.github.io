@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 titlediv.classList.add('title-holder');
                 titlediv.innerHTML = `
                     <div class="title">
-                        <span class="inter-blkit">${toUpperCase(sportName)}</span>
+                        <span class="inter-blkit">${toUpperCase(sportName.replace(/_/g,' '))}</span>
                     </div>
                 `;
     
