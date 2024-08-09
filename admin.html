@@ -1,283 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Console</title>
-    <link rel="shortcut icon" href="assets/spsu/favicon.png" type="png">
-    <style>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Console</title>
+        <link rel="shortcut icon" href="assets/spsu/favicon.png" type="png">
+        <style>
         /* Hide content initially */
         #content {
             display: none;
         }
     </style>
-    <link rel="stylesheet" href="css/golbal.css">
+        <link rel="stylesheet" href="css/golbal.css">
 
+        <link rel="stylesheet" href="css/admin/admin.css">
 
-    <link rel="stylesheet" href="css/admin/admin.css">
+        <link rel="stylesheet" href="css/admin/admincontent.css">
 
+        <!-- Bootstrap Icons CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+            rel="stylesheet">
 
-    <link rel="stylesheet" href="css/admin/admincontent.css">
+    </head>
 
+    <body id="content">
 
-    <!-- Bootstrap Icons CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
-
-</head>
-
-<body id="content">
-
-    <!-- header -->
-    <nav class="navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/spsu/erplogo.png" alt="">
-            </a>
-            <div class="user-info">
-                <p class="welcome-message">Welcome Admin !!</p>
-                <div class="user-avatar" role="img" aria-label="Admin Avatar"><i
-                        class="bi bi-person-fill profile-icon"></i></div>
+        <!-- header -->
+        <nav class="navbar">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/spsu/erplogo.png" alt>
+                </a>
+                <div class="user-info">
+                    <p class="welcome-message">Welcome Admin !!</p>
+                    <div class="user-avatar" role="img"
+                        aria-label="Admin Avatar"><i
+                            class="bi bi-person-fill profile-icon"></i></div>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- side navbar -->
+        <!-- side navbar -->
 
-    <div class="sidenav">
-        <a class="sidenav-head">Navigation</a>
-        <div class="sidenav-items">
-            <a href="#" class="active" data-target="dashboard"><i class="bi bi-speedometer2"></i>Dashboard</a>
-            <a href="#" data-target="pending-requests"><i class="bi bi-hourglass"></i>Pending Requests</a>
-            <a href="#" data-target="return-items"><i class="bi bi-arrow-clockwise"></i>Retake items</a>
-            <a href="#" data-target="inventory"><i class="bi bi-box-seam"></i>Inventory</a>
-            <a href="#" data-target="reports"><i class="bi bi-file-spreadsheet"></i>Reports</a>
-            <a href="#" data-target="activity-logs"><i class="bi bi-stack-overflow"></i>Activity Logs</a>
-            <a href="#" data-target="manage-users"><i class="bi bi-person"></i>Manage Users</a>
-        </div>
-    </div>
-
-    <!-- Content Control -->
-
-    <div class="content-main">
-
-        <!-- DashBoard -->
-        <div id="dashboard" class="content-section">
-            <section class="stats-panel">
-                <div class="stat-row download-ondb">
-                    <div class="report-buttons">
-                        <button class="report-button">View Daily Report</button>
-                        <button class="report-button">View Monthly Report</button>
-                    </div>
-                </div>
-                <div class="stats-row">
-                    <article class="stat-card">
-                        <i class="bi bi-people-fill stat-icon"></i>
-                        <p class="stat-value" id="total-users">...</p>
-                        <h2 class="stat-label">Total Users</h2>
-                    </article>
-                    <article class="stat-card">
-                        <i class="bi bi-clock-history stat-icon"></i>
-                        <p class="stat-value" id="pending-requests-stats">...</p>
-                        <h2 class="stat-label">Pending Requests</h2>
-                    </article>
-                    <article class="stat-card">
-                        <i class="bi bi-card-checklist stat-icon"></i>
-                        <p class="stat-value">17</p>
-                        <h2 class="stat-label">Allocated Items</h2>
-                    </article>
-                    <article class="stat-card">
-                        <i class="bi bi-trash stat-icon"></i>
-                        <p class="stat-value" id="rejected-requests">...</p>
-                        <h2 class="stat-label">Rejected Requests</h2>
-                    </article>
-                    <article class="stat-card">
-                        <i class="bi bi-boxes stat-icon"></i>
-                        <p class="stat-value" id="total-inventory-items">...</p>
-                        <h2 class="stat-label">Current Inventory</h2>
-                    </article>
-                    <article class="stat-card">
-                        <i class="bi bi-table stat-icon"></i>
-                        <p class="stat-value">0</p>
-                        <h2 class="stat-label">Ongoing Events</h2>
-                    </article>
-                </div>
-
-            </section>
-        </div>
-
-        <!-- Pending Requests -->
-        <div id="pending-requests" class="content-section">
-            <div class="pr-container">
-                <div class="requests-panel">
-                    <h2>Recent Requests</h2>
-                    <ul id="requests-list">
-                        <!-- Dynamic list items will be inserted here by JavaScript -->
-                    </ul>
-                </div>
-                <div class="details-panel">
-                    <div class="user-info">
-                        <div class="req-details">
-                            <p><i class="bi bi-person-fill bt-icons"></i> <strong>Name:</strong> <span
-                                    id="user-name">N/A</span></p>
-                            <p><i class="bi bi-award-fill bt-icons"></i> <strong>Role:</strong> <span
-                                    id="user-role">N/A</span></p>
-                        </div>
-                        <div class="req-details">
-                            <p><i class="bi bi-telephone-fill bt-icons"></i> <strong>Phone no:</strong> <span
-                                    id="user-phone">N/A</span></p>
-                            <p><i class="bi bi-person-vcard bt-icons"></i> <strong>Program:</strong> <span
-                                    id="user-program">N/A</span></p>
-                        </div>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Item Name</th>
-                                <th>Available</th>
-                                <th>Requested</th>
-                            </tr>
-                        </thead>
-                        <tbody id="items-list">
-                            <!-- Item rows will be inserted here -->
-                        </tbody>
-                    </table>
-                    <div class="item-usage-time">
-                        <label class="usage-text">Item Usage Time (in hr):</label>
-                        <div class="radio-group">
-                            <div class="custom-radio">
-                                <input type="radio" name="usage-time" value="3" id="usage-3">
-                                <label class="radio-label" for="usage-3">3</label>
-                            </div>
-                            <div class="custom-radio">
-                                <input type="radio" name="usage-time" value="6" id="usage-6">
-                                <label class="radio-label" for="usage-6">6</label>
-                            </div>
-                            <div class="custom-radio">
-                                <input type="radio" name="usage-time" value="12" id="usage-12">
-                                <label class="radio-label" for="usage-12">12</label>
-                            </div>
-                            <div class="custom-radio">
-                                <input type="radio" name="usage-time" value="24" id="usage-24">
-                                <label class="radio-label" for="usage-24">24</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button id="reject-btn">Reject Request</button>
-                        <button id="issue-btn">Issue Items</button>
-                    </div>
-                </div>
+        <div class="sidenav">
+            <a class="sidenav-head">Navigation</a>
+            <div class="sidenav-items">
+                <a href="#" class="active" data-target="dashboard"><i
+                        class="bi bi-speedometer2"></i>Dashboard</a>
+                <a href="#" data-target="pending-requests"><i
+                        class="bi bi-hourglass"></i>Pending Requests</a>
+                <a href="#" data-target="return-items"><i
+                        class="bi bi-arrow-clockwise"></i>Retake items</a>
+                <a href="#" data-target="inventory"><i
+                        class="bi bi-box-seam"></i>Inventory</a>
+                <a href="#" data-target="reports"><i
+                        class="bi bi-file-spreadsheet"></i>Reports</a>
+                <a href="#" data-target="activity-logs"><i
+                        class="bi bi-stack-overflow"></i>Activity Logs</a>
+                <a href="#" data-target="manage-users"><i
+                        class="bi bi-person"></i>Manage Users</a>
             </div>
         </div>
 
-        <!-- Inventory -->
-        <div id="inventory" class="content-section">
-            <div class="inv-holder">
-                <div class="inventory-container">
-                    <div class="sports-list">
-                        <h2>Sports</h2>
-                        <ul id="sports-list">
-                            <!-- Sports names will be dynamically loaded here -->
+        <!-- Content Control -->
+
+        <div class="content-main">
+
+            <!-- DashBoard -->
+            <div id="dashboard" class="content-section">
+                <section class="stats-panel">
+                    <div class="stat-row download-ondb">
+                        <div class="report-buttons">
+                            <button class="report-button">View Daily
+                                Report</button>
+                            <button class="report-button">View Monthly
+                                Report</button>
+                        </div>
+                    </div>
+                    <div class="stats-row">
+                        <article class="stat-card">
+                            <i class="bi bi-people-fill stat-icon"></i>
+                            <p class="stat-value" id="total-users">...</p>
+                            <h2 class="stat-label">Total Users</h2>
+                        </article>
+                        <article class="stat-card">
+                            <i class="bi bi-clock-history stat-icon"></i>
+                            <p class="stat-value"
+                                id="pending-requests-stats">...</p>
+                            <h2 class="stat-label">Pending Requests</h2>
+                        </article>
+                        <article class="stat-card">
+                            <i class="bi bi-card-checklist stat-icon"></i>
+                            <p class="stat-value">17</p>
+                            <h2 class="stat-label">Allocated Items</h2>
+                        </article>
+                        <article class="stat-card">
+                            <i class="bi bi-trash stat-icon"></i>
+                            <p class="stat-value" id="rejected-requests">...</p>
+                            <h2 class="stat-label">Rejected Requests</h2>
+                        </article>
+                        <article class="stat-card">
+                            <i class="bi bi-boxes stat-icon"></i>
+                            <p class="stat-value"
+                                id="total-inventory-items">...</p>
+                            <h2 class="stat-label">Current Inventory</h2>
+                        </article>
+                        <article class="stat-card">
+                            <i class="bi bi-table stat-icon"></i>
+                            <p class="stat-value">0</p>
+                            <h2 class="stat-label">Ongoing Events</h2>
+                        </article>
+                    </div>
+
+                </section>
+            </div>
+
+            <!-- Pending Requests -->
+            <div id="pending-requests" class="content-section">
+                <div class="pr-container">
+                    <div class="requests-panel">
+                        <h2>Recent Requests</h2>
+                        <ul id="requests-list">
+                            <!-- Dynamic list items will be inserted here by JavaScript -->
                         </ul>
                     </div>
-                    <div class="inventory-details">
-                        <h2>Inventory Details</h2>
+                    <div class="details-panel">
+                        <div class="user-info">
+                            <div class="req-details">
+                                <p><i class="bi bi-person-fill bt-icons"></i>
+                                    <strong>Name:</strong> <span
+                                        id="user-name">N/A</span></p>
+                                <p><i class="bi bi-award-fill bt-icons"></i>
+                                    <strong>Role:</strong> <span
+                                        id="user-role">N/A</span></p>
+                            </div>
+                            <div class="req-details">
+                                <p><i class="bi bi-telephone-fill bt-icons"></i>
+                                    <strong>Phone no:</strong> <span
+                                        id="user-phone">N/A</span></p>
+                                <p><i class="bi bi-person-vcard bt-icons"></i>
+                                    <strong>Program:</strong> <span
+                                        id="user-program">N/A</span></p>
+                            </div>
+                        </div>
                         <table>
                             <thead>
                                 <tr>
                                     <th>Item Name</th>
-                                    <th>Quantity</th>
+                                    <th>Available</th>
+                                    <th>Requested</th>
                                 </tr>
                             </thead>
-                            <tbody id="inventory-table">
-                                <!-- Inventory details will be dynamically loaded here -->
+                            <tbody id="items-list">
+                                <!-- Item rows will be inserted here -->
                             </tbody>
                         </table>
+                        <div class="item-usage-time">
+                            <label class="usage-text">Item Usage Time (in
+                                hr):</label>
+                            <div class="radio-group">
+                                <div class="custom-radio">
+                                    <input type="radio" name="usage-time"
+                                        value="3" id="usage-3">
+                                    <label class="radio-label"
+                                        for="usage-3">3</label>
+                                </div>
+                                <div class="custom-radio">
+                                    <input type="radio" name="usage-time"
+                                        value="6" id="usage-6">
+                                    <label class="radio-label"
+                                        for="usage-6">6</label>
+                                </div>
+                                <div class="custom-radio">
+                                    <input type="radio" name="usage-time"
+                                        value="12" id="usage-12">
+                                    <label class="radio-label"
+                                        for="usage-12">12</label>
+                                </div>
+                                <div class="custom-radio">
+                                    <input type="radio" name="usage-time"
+                                        value="24" id="usage-24">
+                                    <label class="radio-label"
+                                        for="usage-24">24</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button id="reject-btn">Reject Request</button>
+                            <button id="issue-btn">Issue Items</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="inv-dowloadholder">
-                <input type="file" id="file-input" style="display: none;" />
-                <btn id="inv-download-btn">Download Inventory</btn>
-                <label for="file-input" id="inv-upload-btn">Upload New Inventory</label>
+            <!-- Inventory -->
+            <div id="inventory" class="content-section">
+                <div class="inv-holder">
+                    <div class="inventory-container">
+                        <div class="sports-list">
+                            <h2>Sports</h2>
+                            <ul id="sports-list">
+                                <!-- Sports names will be dynamically loaded here -->
+                            </ul>
+                        </div>
+                        <div class="inventory-details">
+                            <h2>Inventory Details</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inventory-table">
+                                    <!-- Inventory details will be dynamically loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inv-dowloadholder">
+                    <input type="file" id="file-input" style="display: none;" />
+                    <btn id="inv-download-btn">Download Inventory</btn>
+                    <label for="file-input" id="inv-upload-btn">Upload New
+                        Inventory</label>
+                </div>
+
             </div>
+
+            <!-- Return Items -->
+            <div id="return-items" class="content-section">
+                <div class="ri-container">
+                    <div class="requests-panel">
+                        <h2>Issued Requests</h2>
+                        <ul id="issued-requests-list">
+                            <!-- Dynamic list items will be inserted here by JavaScript -->
+                        </ul>
+                    </div>
+                    <div class="details-panel">
+                        <div class="user-info">
+                            <div class="req-details">
+                                <p><i class="bi bi-person-fill bt-icons"></i>
+                                    <strong>Name:</strong> <span
+                                        id="user-name">N/A</span></p>
+                                <p><i class="bi bi-award-fill bt-icons"></i>
+                                    <strong>Role:</strong> <span
+                                        id="user-role">N/A</span></p>
+                            </div>
+                            <div class="req-details">
+                                <p><i class="bi bi-telephone-fill bt-icons"></i>
+                                    <strong>Phone no:</strong> <span
+                                        id="user-phone">N/A</span></p>
+                                <p><i class="bi bi-person-vcard bt-icons"></i>
+                                    <strong>Course:</strong> <span
+                                        id="user-course">N/A</span></p>
+                            </div>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item Name</th>
+                                    <th>Issued</th>
+                                    <th>Return Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="issued-items-list">
+                                <!-- Item rows will be inserted here -->
+                            </tbody>
+                        </table>
+                        <div class="action-buttons">
+                            <button id="return-btn"">Mark as Returned</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- reports -->
+            <div id="reports" class="content-section">
+                <h1>Request Management System</h1>
+
+                <!-- Filter Menu -->
+                <div id="filterMenu">
+                    <select id="timePeriod">
+                        <option value="today">Today</option>
+                        <option value="last7days">Last 7 Days</option>
+                        <option value="last14days">Last 14 Days</option>
+                        <option value="thisMonth">August</option>
+                        <option value="lastMonth">July</option>
+                        <option value="twoMonthsAgo">June</option>
+                    </select>
+
+                    <input type="checkbox" id="statusPending" value="pending">
+                    Pending
+                    <input type="checkbox" id="statusAccepted" value="issued">
+                    issued
+                    <input type="checkbox" id="statusRejected" value="rejected">
+                    rejected
+                    <input type="checkbox" id="statusReturned" value="returned">
+                    Returned
+
+                    <button id="filterButton">Filter</button>
+                </div>
+
+                <!-- Table Displaying Requests -->
+                <table id="requestTable" border="1">
+                    <thead>
+                        <tr>
+                            <th>S. No.</th>
+                            <th>Request IDs</th>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Enrollment No.</th>
+                            <th>Sports</th>
+                            <th>Equipments</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="requestBody">
+                        <!-- Dynamically populated rows -->
+                    </tbody>
+                </table>
+
+                <!-- Download & Backup Buttons -->
+                <button id="downloadButton">Download Excel</button>
+                <button id="backupButton">Backup</button>
+            </div>
+
+            <!-- activity Logs -->
+            <div id="activity-logs" class="content-section">Activity Logs
+                Content</div>
+
+            <!-- manage users -->
+            <div id="manage-users" class="content-section">Manage Users
+                Content</div>
 
         </div>
 
-        <!-- Return Items -->
-        <div id="return-items" class="content-section">
-            <div class="ri-container">
-                <div class="requests-panel">
-                    <h2>Issued Requests</h2>
-                    <ul id="issued-requests-list">
-                        <!-- Dynamic list items will be inserted here by JavaScript -->
-                    </ul>
-                </div>
-                <div class="details-panel">
-                    <div class="user-info">
-                        <div class="req-details">
-                            <p><i class="bi bi-person-fill bt-icons"></i> <strong>Name:</strong> <span
-                                    id="user-name">N/A</span></p>
-                            <p><i class="bi bi-award-fill bt-icons"></i> <strong>Role:</strong> <span
-                                    id="user-role">N/A</span></p>
-                        </div>
-                        <div class="req-details">
-                            <p><i class="bi bi-telephone-fill bt-icons"></i> <strong>Phone no:</strong> <span
-                                    id="user-phone">N/A</span></p>
-                            <p><i class="bi bi-person-vcard bt-icons"></i> <strong>Course:</strong> <span
-                                    id="user-course">N/A</span></p>
-                        </div>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Item Name</th>
-                                <th>Issued</th>
-                                <th>Return Time</th>
-                            </tr>
-                        </thead>
-                        <tbody id="issued-items-list">
-                            <!-- Item rows will be inserted here -->
-                        </tbody>
-                    </table>
-                    <div class="action-buttons">
-                        <button id="return-btn"">Mark as Returned</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- JS For auth bypass -->
+        <script type="module"
+            src="javascript/module/admin/admin-page-auth.js"></script>
 
-        <!-- reports -->
-        <div id=" reports" class="content-section">Reports Content
-                    </div>
+        <!-- Control pannel Dyanmic script and css loading for sections -->
+        <script src="javascript/normal/admin/admincontent.js"></script>
 
-                    <!-- activity Logs -->
-                    <div id="activity-logs" class="content-section">Activity Logs Content</div>
+        <!-- Excle JS linking script -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
 
-                    <!-- manage users -->
-                    <div id="manage-users" class="content-section">Manage Users Content</div>
-
-
-                </div>
-
-
-
-                <!-- JS For auth bypass -->
-                <script type="module" src="javascript/module/admin/admin-page-auth.js"></script>
-
-                <!-- Control pannel Dyanmic script and css loading for sections -->
-                <script src="javascript/normal/admin/admincontent.js"></script>
-
-
-                <!-- Excle JS linking script -->
-                <script src="https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
-
-
-
-
-</body>
+    </body>
 
 </html>
