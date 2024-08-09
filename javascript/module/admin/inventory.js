@@ -75,35 +75,95 @@ async function loadInventoryDetails(sport) {
     }
 }
 
-function downloadExcel() {
+async function downloadExcel() {
+    const ExcelJS = window.ExcelJS; // Use this if using the CDN
+
     // Create a new workbook
-    const wb = XLSX.utils.book_new();
+    const wb = new ExcelJS.Workbook();
+    const ws = wb.addWorksheet('Inventory');
+
+    // Define styles
+    const headerStyle = {
+        font: { bold: true, color: { argb: 'FFFF0000' } }, // Bold red text
+        fill: { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFFF00' } }, // Yellow background
+        alignment: { horizontal: 'center' },
+        border: {
+            top: { style: 'thin', color: { argb: '000000' } },
+            left: { style: 'thin', color: { argb: '000000' } },
+            bottom: { style: 'thin', color: { argb: '000000' } },
+            right: { style: 'thin', color: { argb: '000000' } },
+        }
+    };
+
+    const cellStyle = {
+        fill: { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFFFFF' } }, // White background
+        font: { color: { argb: 'FF000000' } }, // Black text
+        border: {
+            top: { style: 'thin', color: { argb: '000000' } },
+            left: { style: 'thin', color: { argb: '000000' } },
+            bottom: { style: 'thin', color: { argb: '000000' } },
+            right: { style: 'thin', color: { argb: '000000' } },
+        }
+    };
 
     // Add headers
-    const header = ['Sport', 'Item Name', 'Quantity'];
+    ws.addRow(['Sport', 'Item Name', 'Quantity']).eachCell({ includeEmpty: true }, (cell, colNumber) => {
+        cell.style = headerStyle;
+    });
 
     // Prepare data for each sport
     let data = [];
+    let sportName = '';
     allInventoryData.forEach(sportData => {
         const sport = sportData.sport;
+        sportName = sport.replace(/_/g, ' '); // Store the current sport name
         const items = sportData.data;
         Object.keys(items).forEach(key => {
             if (key.startsWith("i_")) {
                 const itemName = key.replace("i_", "");
                 const quantity = items[key];
-                data.push([sport.replace(/_/g, ' '), itemName.replace(/_/g, ' '), quantity]);
+                data.push([sportName, itemName.replace(/_/g, ' '), quantity]);
             }
         });
     });
 
-    // Add header and data to the worksheet
-    const ws = XLSX.utils.aoa_to_sheet([header, ...data]);
+    // Add data rows
+    let startRow = 2;
+    let currentSportName = '';
+    data.forEach((row, index) => {
+        const rowNum = ws.addRow(row);
+        if (row[0] !== currentSportName) {
+            // Merge cells for the previous sport name
+            if (currentSportName !== '') {
+                ws.mergeCells(startRow, 1, rowNum.number - 1, 1);
+            }
+            startRow = rowNum.number;
+            currentSportName = row[0];
+        }
+        rowNum.eachCell({ includeEmpty: true }, (cell, colNumber) => {
+            cell.style = cellStyle;
+        });
+    });
+    // Merge cells for the last sport
+    if (data.length > 0) {
+        ws.mergeCells(startRow, 1, data.length + 1, 1);
+    }
 
-    // Add worksheet to the workbook
-    XLSX.utils.book_append_sheet(wb, ws, 'Inventory');
+    // Set column widths
+    ws.getColumn(1).width = 20; // Sport
+    ws.getColumn(2).width = 30; // Item Name
+    ws.getColumn(3).width = 10; // Quantity
 
     // Generate Excel file and trigger download
-    XLSX.writeFile(wb, 'entire_inventory.xlsx');
+    wb.xlsx.writeBuffer().then(buffer => {
+        const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'entire_inventory.xlsx';
+        a.click();
+        window.URL.revokeObjectURL(url);
+    });
 }
 
 function handleFileSelect(event) {
@@ -114,19 +174,27 @@ function handleFileSelect(event) {
 
         reader.onload = async (e) => {
             const data = new Uint8Array(e.target.result);
-            const workbook = XLSX.read(data, { type: 'array' });
+            const workbook = new ExcelJS.Workbook();
+            await workbook.xlsx.load(data);
 
             // Assuming the first sheet is the one to process
-            const sheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[sheetName];
-            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+            const worksheet = workbook.worksheets[0];
+            const jsonData = [];
+            worksheet.eachRow({ includeEmpty: true }, (row, rowNumber) => {
+                if (rowNumber > 1) { // Skip header row
+                    const sport = row.getCell(1).value;
+                    const itemName = row.getCell(2).value;
+                    const quantity = row.getCell(3).value;
+
+                    if (sport && itemName && quantity) {
+                        jsonData.push([sport, itemName, quantity]);
+                    }
+                }
+            });
 
             // Process the JSON data and update Firestore
             try {
                 const inventoryCollection = collection(db, "inventory");
-
-                // Remove header from data
-                jsonData.shift();
 
                 jsonData.forEach(async (row) => {
                     const [sport, itemName, quantity] = row;
