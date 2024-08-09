@@ -14,9 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-document.addEventListener("DOMContentLoaded", async () => {
-    await loadSports();
-});
+loadSports();
 
 async function loadSports() {
     try {
@@ -25,7 +23,7 @@ async function loadSports() {
         querySnapshot.forEach((doc) => {
             const sport = doc.id;
             const listItem = document.createElement("li");
-            listItem.innerText = sport;
+            listItem.innerText = sport.replace(/_/g,' ');
             listItem.onclick = () => loadInventoryDetails(sport);
             sportsList.appendChild(listItem);
         });
@@ -47,7 +45,7 @@ async function loadInventoryDetails(sport) {
                     const quantity = data[key];
                     inventoryTable.innerHTML += `
                         <tr>
-                            <td>${itemName}</td>
+                            <td>${itemName.replace(/_/g,' ')}</td>
                             <td>${quantity}</td>
                         </tr>
                     `;
