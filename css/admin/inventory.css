@@ -1,0 +1,126 @@
+/* Inventory page styling */
+.inventory-container {
+  display: flex;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.sports-list {
+  width: 350px;
+  border: 1px solid #ddd;
+  color: #ffffff;
+  box-shadow: 0 0 12px 6px rgba(0, 0, 0, 0.05);
+}
+
+.sports-list h2 {
+  margin: 0;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.5em;
+  background-color: var(--spsu-color);
+}
+
+#sports-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  max-height: 450px;
+  color: black;
+}
+
+#sports-list li {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: space-between;
+}
+
+#sports-list li:hover {
+  background: #f1f1f1;
+}
+
+.inventory-details {
+  margin-left: 40px;
+  width: 720px;
+  padding: 20px;
+  max-height: 469px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 12px 6px rgba(0, 0, 0, 0.035);
+}
+
+.inventory-details h2 {
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--spsu-color) !important;
+  color: #fff;
+  font-weight: normal;
+}
+
+#inv-download-btn {
+  background-color: var(--spsu-color);
+  padding: 12px;
+  color: white;
+  font-family: "Inter";
+  font-weight: 500;
+  cursor: pointer;
+  transition: linear 0.3s ease-in-out;
+}
+
+#inv-download-btn:hover {
+  background-color: var(--spsu-color-dark);
+}
+
+.inv-dowloadholder {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 25px;
+}
+
+#file-input {
+  display: none; /* Hide the default file input */
+}
+
+#inv-upload-btn {
+  background-color: var(--spsu-color);
+  padding: 12px;
+  color: white;
+  font-family: "Inter";
+  font-weight: 500;
+  cursor: pointer;
+  transition: linear 0.3s ease-in-out;
+  border: none; /* Remove default border */
+  display: inline-block; /* Ensure label behaves like a button */
+  text-align: center; /* Center the text inside the label */
+}
+
+#inv-upload-btn:hover {
+  background-color: var(--spsu-color-dark);
+}
+
+

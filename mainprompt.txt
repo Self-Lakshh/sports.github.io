@@ -1,0 +1,43 @@
+i want to make a website in HTML, CSS, JS only. These are the features you have to add in it:-
+1. use CSS as much less as you can (this not imp for me right now)
+
+2. access one of my Firestore database's collection named "requests". whose structure is like this 
+"
+requests (collection)
+	- uuid (document)
+		- email : "abc@gmail.com"
+		- enroll_no : "23CS002726"
+		- game : "cricket"
+		- i_abdominal_guard : 3
+		- i_bails : 1
+		...
+	...
+"
+3. web page should contain table which will contain following attributes : S.No. (you will gen this in order), Request IDs (UUIDS) of current date's request (document names), name of students (named "name" in db), enrollment no (named "enroll_no" in db), sports selected (filed name in collection is "game"), equipment selected which you can identify form the all filed as the items has "i_" in the starting, quantity of equipment's selected (value of the items), status of request (named of field "status" in db). the format of this table on the web page should look something like this :- 
+
+"
+S. No.| Request IDs         | Date       |  Name           |  Enrollment No  |  Sports   |  Equipments          |   Quantity   | statuts
+    1 | 1dEmxV3XKW7ANPDxURJk| 09-08-2024 | Puneet Dhankar  |  23CS002726     | Cricket   | Cricket Bat          | 2            |  pending
+      |			    |		 |		   |		     |		 | Cricket Leather Ball |1	       |
+      |			    |		 |		   |		     |		 | Strumps		|3	       |
+    2 |G6eYNZZjYUzdrJiunrox | 09-08-2024 | Yash Mehta      | 23CS002800      |  Badminton|  Badminton Racket    |  2           | pending
+      |			    |		 |	           |		     |		 | Shuttlecock		|1	       |
+"
+
+see in this the items arnged format should be follwed ass i have shown as diff request and diff items and so do it that way
+
+this data should be insereted dynamically on user screen after reading the "requests" collection.
+ 
+4. above that table which we will genreated in point 3 make (filter table menu) which contain one dropdown menu for selecting the time period with choices - {today, last 7 days, last 14 days and last 2 month names including cureent month} so total 6 choices as so basically suppose i clicked last 7 days in the dropdown menu and then clicked the button then content of table should show the requests of last 7 days from the current date. And by-default when no filter is selected table should show request of current date only. 
+
+{also that dropdown menu should also contain 3 months and these 3 months should recent 3 months. suppose august is going on, then dropdown should show "today", "last 7 days", "last 14 days", "august", "July", "June".} --> for example of dropdown 
+
+
+5. the filter menu should also contain 4 checkboxes - "pending", "accepted", "rejected", "returned". if user selects one of them than only those requests should be shown whose current status is same as that of status in collection "requests". suppose user filter out last 7 days of requests then usual table will get printed but after that if user selected "accepted" checkbox than that table should get further filter out and only accepted request should be shown. allow multiple selection
+
+. and there should be a button near this all the filter menu named "filter" button. which will active and fillter the things after the selection are made by user.
+
+6. there should be a button below that table, for downloading a excel file of same content as that of current table after filters applied(if any selected).
+
+7. last functionality is that, you have to add a "backup" button near that download btn. function of this button is that it will make a new collection named "backup_{datewhenpressed}" in the firestore database and in that collection all those requests which are on screen after filter by user should be written in the same manner in which it is written in "requests" collection. after that those particular requests should be deleted from "requests" collection after writing them in "backup1". but keep in mind that if there is any request in the cuurent fillted table by user whcich he want to make backup whose status is pending and then also clicks this backup button then it should show a alert that pending requests couldn't be deleted and then this process should stop and no backup should me made. in other words this button will function only if there is no pending request in current filtered table.
+one more thing that if "backup_{datewhenpressed}" collection is already in the Firestore database then it should make 2nd backup file without overwriting the first one, i.e. should create "backup_{datewhenpressed}2" collection.

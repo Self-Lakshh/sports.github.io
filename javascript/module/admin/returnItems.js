@@ -123,4 +123,5 @@ async function markAsReturned() {
 }
 
 // Attach event listeners
-document.querySelector('.action-buttons').querySelectorAll('button')[0].addEventListener('click', markAsReturned);
+const returnbtn = document.getElementById('return-btn');
+returnbtn.addEventListener('click', markAsReturned);

@@ -173,28 +173,37 @@
 
         <!-- Inventory -->
         <div id="inventory" class="content-section">
-            <div class="inventory-container">
-                <div class="sports-list">
-                    <h2>Sports</h2>
-                    <ul id="sports-list">
-                        <!-- Sports names will be dynamically loaded here -->
-                    </ul>
-                </div>
-                <div class="inventory-details">
-                    <h2>Inventory Details</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Item Name</th>
-                                <th>Quantity</th>
-                            </tr>
-                        </thead>
-                        <tbody id="inventory-table">
-                            <!-- Inventory details will be dynamically loaded here -->
-                        </tbody>
-                    </table>
+            <div class="inv-holder">
+                <div class="inventory-container">
+                    <div class="sports-list">
+                        <h2>Sports</h2>
+                        <ul id="sports-list">
+                            <!-- Sports names will be dynamically loaded here -->
+                        </ul>
+                    </div>
+                    <div class="inventory-details">
+                        <h2>Inventory Details</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item Name</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventory-table">
+                                <!-- Inventory details will be dynamically loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+
+            <div class="inv-dowloadholder">
+                <input type="file" id="file-input" style="display: none;" />
+                <btn id="inv-download-btn">Download Inventory</btn>
+                <label for="file-input" id="inv-upload-btn">Upload New Inventory</label>
+            </div>
+
         </div>
 
         <!-- Return Items -->
@@ -234,31 +243,37 @@
                         </tbody>
                     </table>
                     <div class="action-buttons">
-                        <button onclick="markItemsAsReturned()">Mark as Returned</button>
+                        <button id="return-btn"">Mark as Returned</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- reports -->
-        <div id="reports" class="content-section">Reports Content</div>
+        <div id=" reports" class="content-section">Reports Content
+                    </div>
 
-        <!-- activity Logs -->
-        <div id="activity-logs" class="content-section">Activity Logs Content</div>
+                    <!-- activity Logs -->
+                    <div id="activity-logs" class="content-section">Activity Logs Content</div>
 
-        <!-- manage users -->
-        <div id="manage-users" class="content-section">Manage Users Content</div>
-
-
-    </div>
+                    <!-- manage users -->
+                    <div id="manage-users" class="content-section">Manage Users Content</div>
 
 
+                </div>
 
-    <!-- JS For auth bypass -->
-    <script type="module" src="javascript/module/admin/admin-page-auth.js"></script>
 
-    <!-- Control pannel Dyanmic script and css loading for sections -->
-    <script src="javascript/normal/admin/admincontent.js"></script>
+
+                <!-- JS For auth bypass -->
+                <script type="module" src="javascript/module/admin/admin-page-auth.js"></script>
+
+                <!-- Control pannel Dyanmic script and css loading for sections -->
+                <script src="javascript/normal/admin/admincontent.js"></script>
+
+
+                <!-- Excle JS linking script -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+
 
 
 
