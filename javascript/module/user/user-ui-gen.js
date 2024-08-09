@@ -6,6 +6,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const homebtn_logo = document.getElementById('home-btn-logo');
     const sportsContainer = document.getElementById('sports-container');
     const itemsContainer = document.getElementById('items-container');
+    const skeletonSports = document.getElementById('skeleton-sports');
+    const skeletonSportsText = document.getElementById('skeleton-sports-text');
+    const skeletonItems = document.getElementById('skeleton-items');
+    const skeletonItemsText = document.getElementById('skeleton-items-text');
+
+    // Show skeleton loaders
+    skeletonSports.style.display = 'block';
+    skeletonSportsText.style.display = 'block';
+    skeletonItems.style.display = 'block';
+    skeletonItemsText.style.display = 'block';
+
+    function hideSkeleton() {
+        skeletonSports.style.display = 'none';
+        skeletonSportsText.style.display = 'none';
+        skeletonItems.style.display = 'none';
+        skeletonItemsText.style.display = 'none';
+    }
 
     function capitalizeWords(str) {
         return str.split(' ').map(word => {
@@ -43,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const docRef = doc(db, 'inventory', sportName);
         getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
+                hideSkeleton();
                 const items = docSnap.data();
                 const titlediv = document.createElement('div');
                 titlediv.classList.add('title-holder');
@@ -215,6 +233,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const colRef = collection(db, 'inventory');
     getDocs(colRef).then(querySnapshot => {
+        hideSkeleton();
+
         querySnapshot.forEach(doc => {
             createSportCard(doc.id);
         });
