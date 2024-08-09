@@ -169,71 +169,71 @@ async function issueItems() {
         fetchPendingRequests();
 
 
-        // Prepare email template parameters
-        let templateParams = {
-            to_email: email,
-            subject: `Your Requested ${game} Items have been Issued`,
-            main_mail: `
-                <body style="font-family: salmon, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
-                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; background-color: #ffffff; margin-top: 20px;">
-                        <tr>
-                            <td align="center" style="padding: 20px 0; background-color: #FEA40E; color: #ffffff;">
-                                <h1 style="margin: 0;">SPSU SPORTS ERP</h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 20px;">
-                                <p style="font-size: 16px; color: #333333;">
-                                    Dear ${name},
-                                </p>
-                                <p style="font-size: 16px; color: #333333;">
-                                    We are pleased to inform you that your request for the following sports items has been approved and issued. Please kindly collect your items from the sports room.
-                                </p>
-                                <table border="1" cellpadding="10" cellspacing="0" width="100%" style="border-collapse: collapse; margin: 20px 0;">
-                                    <thead>
-                                        <tr style="background-color: #f2f2f2;">
-                                            <th style="border: 1px solid #dddddd; text-align: left;">Item</th>
-                                            <th style="border: 1px solid #dddddd; text-align: left;">Quantity</th>
-                                        </tr>
-                                    </thead>
-                                    ${tablebody.innerHTML}
-                                </table>
-                                <p style="font-size: 16px; color: #333333;">
-                                    You can collect these items from the sports room. Please ensure to return the items by <strong>${formattedTime} on ${formattedDate}</strong>.
-                                </p>
-                                <p style="font-size: 16px; color: #333333;">
-                                    Thank you for using the Sports Inventory Management System.
-                                </p>
-                                <p style="font-size: 16px; color: #333333;">
-                                    Best regards,<br>
-                                    SPSU Sports Inventory Management Team
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center" style="padding: 10px; background-color: #FEA40E; color: #ffffff;">
-                                <p style="margin: 0; font-size: 14px;">&copy; 2024 SPSU Sports Inventory Management System. All rights reserved.</p>
-                            </td>
-                        </tr>
-                    </table>
-                </body>
-            `,
-            reply_to: 'spsusports.erp@spsu.ac.in'
-        };
+        // // Prepare email template parameters
+        // let templateParams = {
+        //     to_email: email,
+        //     subject: `Your Requested ${game} Items have been Issued`,
+        //     main_mail: `
+        //         <body style="font-family: salmon, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+        //             <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; background-color: #ffffff; margin-top: 20px;">
+        //                 <tr>
+        //                     <td align="center" style="padding: 20px 0; background-color: #FEA40E; color: #ffffff;">
+        //                         <h1 style="margin: 0;">SPSU SPORTS ERP</h1>
+        //                     </td>
+        //                 </tr>
+        //                 <tr>
+        //                     <td style="padding: 20px;">
+        //                         <p style="font-size: 16px; color: #333333;">
+        //                             Dear ${name},
+        //                         </p>
+        //                         <p style="font-size: 16px; color: #333333;">
+        //                             We are pleased to inform you that your request for the following sports items has been approved and issued. Please kindly collect your items from the sports room.
+        //                         </p>
+        //                         <table border="1" cellpadding="10" cellspacing="0" width="100%" style="border-collapse: collapse; margin: 20px 0;">
+        //                             <thead>
+        //                                 <tr style="background-color: #f2f2f2;">
+        //                                     <th style="border: 1px solid #dddddd; text-align: left;">Item</th>
+        //                                     <th style="border: 1px solid #dddddd; text-align: left;">Quantity</th>
+        //                                 </tr>
+        //                             </thead>
+        //                             ${tablebody.innerHTML}
+        //                         </table>
+        //                         <p style="font-size: 16px; color: #333333;">
+        //                             You can collect these items from the sports room. Please ensure to return the items by <strong>${formattedTime} on ${formattedDate}</strong>.
+        //                         </p>
+        //                         <p style="font-size: 16px; color: #333333;">
+        //                             Thank you for using the Sports Inventory Management System.
+        //                         </p>
+        //                         <p style="font-size: 16px; color: #333333;">
+        //                             Best regards,<br>
+        //                             SPSU Sports Inventory Management Team
+        //                         </p>
+        //                     </td>
+        //                 </tr>
+        //                 <tr>
+        //                     <td align="center" style="padding: 10px; background-color: #FEA40E; color: #ffffff;">
+        //                         <p style="margin: 0; font-size: 14px;">&copy; 2024 SPSU Sports Inventory Management System. All rights reserved.</p>
+        //                     </td>
+        //                 </tr>
+        //             </table>
+        //         </body>
+        //     `,
+        //     reply_to: 'spsusports.erp@spsu.ac.in'
+        // };
 
-        emailjs.init({
-            publicKey: 'akGkFTsSUSsKuIdXP'
-        });
+        // emailjs.init({
+        //     publicKey: 'akGkFTsSUSsKuIdXP'
+        // });
 
-        // Send email using EmailJS
-        emailjs.send("spsu_sports", "template_cj6i30v", templateParams)
-            .then((response) => {
-                alert(`Email sent successfully to ${email}`);
-                console.log('Email sent successfully!', response.status, response.text);
-            }, (error) => {
-                console.error('Failed to send email:', error);
-                alert(`Failed to send email`);
-            });
+        // // Send email using EmailJS
+        // emailjs.send("spsu_sports", "template_cj6i30v", templateParams)
+        //     .then((response) => {
+        //         alert(`Email sent successfully to ${email}`);
+        //         console.log('Email sent successfully!', response.status, response.text);
+        //     }, (error) => {
+        //         console.error('Failed to send email:', error);
+        //         alert(`Failed to send email`);
+        //     });
     }
     else {
         alert('please select the duration for issue.')

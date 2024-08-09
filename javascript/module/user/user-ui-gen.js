@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (quantity === 0) {
                         itemDiv.innerHTML = `
                             <span class="lato-regular">${perf_displayItemName}</span>
+                            <input class="lato-regular" style="display: none;" type="number" id="${itemName}" value="0" min="0" max="${quantity}">
                             <span class="not-available">Not Available</span>
                         `;
                     } else {
